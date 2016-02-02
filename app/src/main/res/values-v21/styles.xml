@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MaterialTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!--enable window transition-->
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+</resources>

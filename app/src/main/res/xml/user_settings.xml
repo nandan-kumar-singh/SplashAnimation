@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:selectable="true"
+    android:shouldDisableView="true">
+    <PreferenceCategory android:title="Filter Subject">
+        <SwitchPreference
+            android:checked="false"
+            android:title="Enable DND"></SwitchPreference>
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
