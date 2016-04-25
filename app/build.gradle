@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "in.vibes.ludus"
+        applicationId "com.cambiar.ludusz"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
@@ -21,6 +21,12 @@ android {
     repositories {
         mavenCentral()
         maven {
+            url "https://jitpack.io"
+        }
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        maven {
             url "https://github.com/dahlgren/vpi-aar/raw/master"
         }
     }
@@ -35,7 +41,11 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.viewpagerindicator:library:2.4.2-SNAPSHOT'
-    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.google.code.gson:gson:2.4'
     compile 'com.google.android.gms:play-services:8.4.0'
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta3'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta3'
+    compile 'com.squareup.okhttp3:okhttp:3.0.0-RC1'
+    compile 'com.viewpagerindicator:library:2.4.2-SNAPSHOT'
+    compile 'com.squareup.picasso:picasso:2.3.2'
 }

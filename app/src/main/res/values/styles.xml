@@ -6,8 +6,25 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundDimEnabled">false</item>
     </style>
 
-    <style name="MaterialTheme" parent="AppTheme"></style>
+    <style name="MaterialTheme" parent="AppTheme"/>
+
+    <style name="PreferencesTheme" parent="AppTheme">
+        <item name="colorAccent">@color/dark_black</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+
+    <style name="MaterialButton" parent="AppTheme">
+        <item name="android:background">@drawable/ludusz_button_round_corner</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 </resources>

@@ -10,5 +10,5 @@
     android:transitionName="@string/app_name"
     app:layout_scrollFlags="scroll|enterAlways"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    local:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    local:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />

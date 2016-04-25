@@ -1,4 +1,4 @@
-package in.vibes.ludus;
+package com.cambiar.ludusz;
 
 import org.junit.Test;
 

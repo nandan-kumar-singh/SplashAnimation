@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
-
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:layout_collapseMode="pin"
-        app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-
-    </android.support.v7.widget.Toolbar>
+    tools:context=".activities.MainActivity">
 
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="vertical">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar"></include>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -36,35 +29,119 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewPagerHome"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp" />
+                    android:layout_height="150dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
 
                 <com.viewpagerindicator.CirclePageIndicator
-                    android:id="@+id/titles"
-                    android:layout_width="fill_parent"
+                    android:id="@+id/page_indicator"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
+                    android:layout_alignBottom="@+id/viewPagerHome"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
             </RelativeLayout>
 
-            <include
-                layout="@layout/layout_home_recyclerview"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="300dp"></include>
+                android:layout_height="35dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/explore_by_your_preference"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white" />
 
-            <include
-                layout="@layout/layout_home_recyclerview"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"></include>
+                android:layout_height="wrap_content">
 
-            <include
-                layout="@layout/layout_home_recyclerview"
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="COACH"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="EVENT CENTER"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"></include>
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PLAYER"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="EVENT"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="INSTITUTE"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SPORTS SHOP"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="NEAR BY"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="FEEDS"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/white" />
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tablayout_feeds"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    app:tabGravity="fill">
+
+                </android.support.design.widget.TabLayout>
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>
 
+
 </RelativeLayout>
-
-
