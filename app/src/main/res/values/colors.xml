@@ -7,12 +7,16 @@
     <color name="red">#C71B1B</color>
     <color name="red_dark">#990000</color>
     <color name="red_shade">#66550000</color>
-    <color name="white">#ffffff</color>
+    <color name="red_transparent">#45990000</color>
+    <color name="white">#F3F3F3</color>
     <color name="white_shade">#e3e3e3</color>
     <color name="whitet">#55ffffff</color>
     <color name="whitet22">#88ffffff</color>
     <color name="white_shadet">#55e3e3e3</color>
     <color name="black">#222222</color>
+    <color name="black_shade">#aa000000</color>
+    <color name="black_shade1">#aa111111</color>
+    <color name="black_shade2">#aa222222</color>
     <color name="dark_black">#000000</color>
     <color name="blue_black">#111122</color>
     <color name="blue">#3333EE</color>

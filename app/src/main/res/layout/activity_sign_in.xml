@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red_shade"
+    android:background="@drawable/back"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="35dp"
         android:layout_weight="1"
         android:fillViewport="true">
 
@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            android:layout_marginTop="35dp"
             android:orientation="vertical">
 
             <ImageView
@@ -34,12 +35,12 @@
                 android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="Login or Create Your New Account"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="55dp">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -66,7 +67,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="@string/user_name"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -83,7 +85,7 @@
                     android:layout_marginRight="-5dp"
                     android:paddingBottom="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@android:drawable/ic_lock_lock" />
+                    android:src="@mipmap/ic_action_lock" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_user_password"
@@ -96,7 +98,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="@string/password"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -106,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/button_round_corner"
+                android:background="@drawable/button_selector_round_corner"
                 android:inputType="text"
                 android:text="@string/signin" />
 
@@ -140,8 +143,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/button_no_corner"
-                    android:src="@mipmap/ic_twitter"
+                    android:background="@drawable/button_selector_no_corner"
+                    android:src="@mipmap/ic_facebook"
                     android:text="New Button" />
 
                 <android.support.v7.widget.AppCompatImageButton
@@ -149,8 +152,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@null"
-                    android:src="@mipmap/ic_facebook"
+                    android:background="@drawable/button_selector_no_corner"
+                    android:src="@mipmap/ic_twitter"
                     android:text="New Button" />
 
                 <android.support.v7.widget.AppCompatImageButton
@@ -158,8 +161,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@null"
-                    android:src="@mipmap/ic_facebook"
+                    android:background="@drawable/button_selector_no_corner"
+                    android:src="@mipmap/ic_google_plus"
                     android:text="New Button" />
             </LinearLayout>
 
@@ -181,7 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="3dp"
-                android:background="@drawable/button_round_corner"
+                android:background="@drawable/button_selector_round_corner"
                 android:text="Register Now" />
 
         </LinearLayout>

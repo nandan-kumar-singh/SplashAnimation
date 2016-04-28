@@ -11,11 +11,25 @@
     <string name="nav_item_my_profile">My Profile</string>
     <string name="nav_item_graph">Graph</string>
     <string name="explore_by_your_preference">Explore</string>
+    <string name="by_your_preference">by your preference</string>
     <string name="user_name">User Name</string>
     <string name="password" translatable="false">Password</string>
     <string name="signin">SignIn</string>
     <string name="forgot_your_password">Forgot Your Password?</string>
     <string name="or_sign_in_with">Or sign in with</string>
+    <string name="action_search">Search</string>
+    <string name="action_notification">Notification</string>
+    <string name="near_by">Near By</string>
+    <string name="share_experience">Share Experience</string>
+    <string name="my_favorite_blog">My Favorite Blog</string>
+    <string name="calendar">Calendar</string>
+    <string name="my_performance">My Performance</string>
+    <string name="coach">COACH</string>
+    <string name="event_center">EVENT CENTER</string>
+    <string name="player">PLAYER</string>
+    <string name="event">EVENT</string>
+    <string name="institute">INSTITUTE</string>
+    <string name="sports_shop">SPORTS SHOP</string>
 
     <string-array name="nav_drawer_labels">
         <item>@string/nav_item_home</item>

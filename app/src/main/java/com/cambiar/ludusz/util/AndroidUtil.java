@@ -110,21 +110,13 @@ public class AndroidUtil {
 
     public static boolean validateEmail(String text) {
         boolean isValid = false;
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
-            isValid = false;
-        } else {
-            isValid = true;
-        }
+        isValid = android.util.Patterns.EMAIL_ADDRESS.matcher(text).matches();
         return isValid;
     }
 
     public static boolean validatePassword(String text) {
         boolean isValid = false;
-        if (text.length() < 6) {
-            isValid = false;
-        } else {
-            isValid = true;
-        }
+        isValid = text.length() >= 6;
         return isValid;
     }
 }

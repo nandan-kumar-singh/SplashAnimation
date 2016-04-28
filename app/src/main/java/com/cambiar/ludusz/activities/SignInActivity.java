@@ -6,8 +6,6 @@ import android.view.View;
 
 import com.cambiar.ludusz.R;
 
-import butterknife.ButterKnife;
-
 public class SignInActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = SignInActivity.class.getSimpleName();
@@ -16,13 +14,13 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        ButterKnife.bind(this);
         initViews();
 
     }
 
     private void initViews() {
-
+        findViewById(R.id.btn_register_user).setOnClickListener(this);
+        findViewById(R.id.btn_sign_in).setOnClickListener(this);
     }
 
     private void startActivity(Class mClass) {

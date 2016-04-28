@@ -5,4 +5,7 @@
     <dimen name="nav_drawer_width">290dp</dimen>
     <dimen name="fab_margin">8dp</dimen>
     <dimen name="statusbar_margin">0dp</dimen>
+    <dimen name="landing_page_left_margin">10dp</dimen>
+    <dimen name="player_landing_page_imageview_width">24dp</dimen>
+    <dimen name="player_landing_page_button_height">50dp</dimen>
 </resources>

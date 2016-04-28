@@ -2,14 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red_shade"
+    android:background="@drawable/back"
     android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="35dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:fillViewport="true">
 
         <LinearLayout
@@ -17,6 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            android:layout_marginTop="35dp"
             android:orientation="vertical">
 
             <ImageView
@@ -31,13 +30,15 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="Create Your New Account"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="55dp">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -81,7 +82,7 @@
                     android:layout_marginRight="-5dp"
                     android:paddingBottom="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/user" />
+                    android:src="@mipmap/ic_action_lock" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_user_email"
@@ -180,7 +181,7 @@
                     android:layout_marginRight="-5dp"
                     android:paddingBottom="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/user" />
+                    android:src="@mipmap/ic_action_lock" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_user_name"
@@ -213,7 +214,7 @@
                     android:layout_marginRight="-5dp"
                     android:paddingBottom="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/user" />
+                    android:src="@mipmap/ic_action_lock" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_user_name"
@@ -240,7 +241,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="3dp"
-                android:background="@drawable/button_round_corner"
+                android:background="@drawable/button_selector_round_corner"
                 android:text="Register Now" />
 
         </LinearLayout>
