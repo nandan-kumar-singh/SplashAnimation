@@ -2,12 +2,19 @@ package com.cambiar.ludusz.util;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.provider.Settings;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -118,5 +125,60 @@ public class AndroidUtil {
         boolean isValid = false;
         isValid = text.length() >= 6;
         return isValid;
+    }
+
+    /****
+     * Method for Setting the Height of the ListView dynamically.
+     * *** Hack to fix the issue of not showing all the items of the ListView
+     * *** when placed inside a ScrollView
+     ****/
+    public static void setListViewHeightBasedOnChildren(ListView listView, RecyclerView recyclerView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        RecyclerView.Adapter adapter = recyclerView.getAdapter();
+
+        if (listAdapter == null)
+            return;
+
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            view = listAdapter.getView(i, view, listView);
+            if (i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
+    }
+
+    public static void setListViewHeightBasedOnChildren(RecyclerView recyclerView) {
+        RecyclerView.Adapter adapter = recyclerView.getAdapter();
+
+        if (recyclerView == null)
+            return;
+
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(recyclerView.getWidth(), View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for (int i = 0; i < adapter.getItemCount(); i++) {
+            view = recyclerView.getChildAt(i);
+            if (i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = recyclerView.getLayoutParams();
+        params.height = totalHeight + (3 * (adapter.getItemCount() - 1));
+        recyclerView.setLayoutParams(params);
+    }
+    public static String getAppVersion(Context context) throws PackageManager.NameNotFoundException {
+        PackageManager manager = context.getPackageManager();
+        PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
+        return info.versionName;
     }
 }

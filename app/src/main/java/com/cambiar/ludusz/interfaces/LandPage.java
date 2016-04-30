@@ -15,7 +15,7 @@ public interface LandPage extends Serializable{
 
     String getProfileImageUrl();
 
-    String getUName();
+    String getPlayerName();
 
     /*in LatLong format*/
     LatLng getLocation();

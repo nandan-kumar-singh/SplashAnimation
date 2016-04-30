@@ -19,17 +19,11 @@ import com.cambiar.ludusz.fragments.GraphFragment;
 import com.cambiar.ludusz.fragments.HomeFragment;
 import com.cambiar.ludusz.fragments.ProfileFragment;
 import com.cambiar.ludusz.model.Ludusz;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends BaseActivity implements DrawerFragment.FragmentDrawerListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     public static DrawerFragment drawerFragment;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +36,7 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
         displayView(0);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
 
     @Override

@@ -1,4 +1,5 @@
 package com.cambiar.ludusz.activities;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.MultiSelectListPreference;
@@ -29,7 +30,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity implements Pre
         addPreferencesFromResource(R.xml.user_settings);
         LinearLayout root = (LinearLayout) findViewById(android.R.id.list).getParent().getParent().getParent();
         Toolbar toolbar = (Toolbar) LayoutInflater.from(this).inflate(R.layout.toolbar, root, false);
-        toolbar.setPadding(0,(int)getResources().getDimension(R.dimen.statusbar_margin),0,0);
+        toolbar.setPadding(0, (int) getResources().getDimension(R.dimen.statusbar_margin), 0, 0);
         root.addView(toolbar, 0);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "122830519982",
+    "project_id": "ludusz-1295"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122830519982:android:9e38a7e3af80e790",
+        "android_client_info": {
+          "package_name": "com.cambiar.ludusz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122830519982-edipvp8md74rfpbg8op5qt880l9umlju.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cambiar.ludusz",
+            "certificate_hash": "850E3E79E9DCE3093DDE56C32C2EDDB0AF96E0F0"
+          }
+        },
+        {
+          "client_id": "122830519982-8aartlpckgb4aublmdniuf988kn6upg9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-vGRW6HQB0H6pDYW013sXSBC_Md5Y2Rc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

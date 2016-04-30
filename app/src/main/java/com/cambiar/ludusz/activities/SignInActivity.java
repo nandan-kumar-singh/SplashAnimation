@@ -19,8 +19,9 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void initViews() {
-        findViewById(R.id.btn_register_user).setOnClickListener(this);
+        findViewById(R.id.btn_sign_in_register_user).setOnClickListener(this);
         findViewById(R.id.btn_sign_in).setOnClickListener(this);
+        findViewById(R.id.btn_sign_in_forget_password).setOnClickListener(this);
     }
 
     private void startActivity(Class mClass) {
@@ -44,8 +45,12 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
                 startActivity(MainActivity.class);
                 break;
             }
-            case R.id.btn_register_user: {
+            case R.id.btn_sign_in_register_user: {
                 startActivity(RegisterUserActivity.class);
+                break;
+            }
+            case R.id.btn_sign_in_forget_password: {
+                startActivity(ResetPasswordActivity.class);
                 break;
             }
             default:

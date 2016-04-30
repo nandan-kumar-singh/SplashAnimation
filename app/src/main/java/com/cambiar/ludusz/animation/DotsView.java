@@ -19,24 +19,28 @@ public class DotsView extends View {
     private static final int COLOR_2 = 0xFFFF9800;
     private static final int COLOR_3 = 0xFFFF5722;
     private static final int COLOR_4 = 0xFFF44336;
+    public static final Property<DotsView, Float> DOTS_PROGRESS = new Property<DotsView, Float>(Float.class, "dotsProgress") {
+        @Override
+        public Float get(DotsView object) {
+            return object.getCurrentProgress();
+        }
 
+        @Override
+        public void set(DotsView object, Float value) {
+            object.setCurrentProgress(value);
+        }
+    };
     private final Paint[] circlePaints = new Paint[4];
-
     private int centerX;
     private int centerY;
-
     private float maxOuterDotsRadius;
     private float maxInnerDotsRadius;
     private float maxDotSize;
-
     private float currentProgress = 0;
-
     private float currentRadius1 = 0;
     private float currentDotSize1 = 0;
-
     private float currentDotSize2 = 0;
     private float currentRadius2 = 0;
-
     private ArgbEvaluator argbEvaluator = new ArgbEvaluator();
 
     public DotsView(Context context) {
@@ -98,6 +102,10 @@ public class DotsView extends View {
         }
     }
 
+    public float getCurrentProgress() {
+        return currentProgress;
+    }
+
     public void setCurrentProgress(float currentProgress) {
         this.currentProgress = currentProgress;
 
@@ -107,10 +115,6 @@ public class DotsView extends View {
         updateDotsAlpha();
 
         postInvalidate();
-    }
-
-    public float getCurrentProgress() {
-        return currentProgress;
     }
 
     private void updateInnerDotsPosition() {
@@ -168,16 +172,4 @@ public class DotsView extends View {
         circlePaints[2].setAlpha(alpha);
         circlePaints[3].setAlpha(alpha);
     }
-
-    public static final Property<DotsView, Float> DOTS_PROGRESS = new Property<DotsView, Float>(Float.class, "dotsProgress") {
-        @Override
-        public Float get(DotsView object) {
-            return object.getCurrentProgress();
-        }
-
-        @Override
-        public void set(DotsView object, Float value) {
-            object.setCurrentProgress(value);
-        }
-    };
 }

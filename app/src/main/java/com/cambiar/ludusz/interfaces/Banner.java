@@ -6,13 +6,13 @@ import java.io.Serializable;
  * Created by vibes on 16/4/16.
  */
 public interface Banner extends Serializable {
-    String getBHeader();
+    String getBannerHeader();
 
-    String getBDescription();
+    String getBannerDescription();
 
-    String getBImageUrl();
+    String getBannerImageUrl();
 
-    String getBStartDate();
+    String getBannerStartDate();
 
-    String getBEndDate();
+    String getBannerEndDate();
 }

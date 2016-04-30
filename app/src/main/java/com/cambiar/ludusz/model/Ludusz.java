@@ -8,8 +8,12 @@ import android.app.Application;
 public class Ludusz extends Application{
     private static User _user;
 
-    public enum User {
-        PLAYER, COACH, CO_ORDINATOR, EVENT_ORGANISER
+    public static User getUser() {
+        return _user;
+    }
+
+    public static void setUser(User user) {
+        _user = user;
     }
 
     @Override
@@ -17,11 +21,7 @@ public class Ludusz extends Application{
         super.onCreate();
     }
 
-    public static User getUser() {
-        return _user;
-    }
-
-    public static void setUser(User user) {
-        _user = user;
+    public enum User {
+        PLAYER, COACH, CO_ORDINATOR, EVENT_ORGANISER
     }
 }

@@ -2,16 +2,19 @@ package com.cambiar.ludusz.userrole;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.cambiar.ludusz.interfaces.Banner;
+import com.cambiar.ludusz.interfaces.Blog;
 import com.cambiar.ludusz.interfaces.LandPage;
-import com.cambiar.ludusz.model.Blog;
 import com.cambiar.ludusz.model.NewsFeed;
+import com.cambiar.ludusz.model.PlayerBlog;
 import com.cambiar.ludusz.model.PromotionalBanner;
 import com.cambiar.ludusz.util.AndroidUtil;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,11 +38,12 @@ public class PlayerLandPage implements LandPage {
         address = new String();
     }
 
+    @Nullable
     @Override
     public List<Banner> getPromotionalBanner() {
         Banner banner1;
         banner1 = (PromotionalBanner) AndroidUtil.getObject(context, "banner1");
-        if (banner1 !=null) {
+        if (banner1 != null) {
             promotionalBanners.add(banner1);
         } else {
             // banner1=new PromotionalBanner("Header1", "Description New", "http://www.emiratesrobotics.me/images/menu-img-4.jpg", "StartDate", "EndDate");
@@ -67,7 +71,7 @@ public class PlayerLandPage implements LandPage {
     }
 
     @Override
-    public String getUName() {
+    public String getPlayerName() {
         return null;
     }
 
@@ -89,7 +93,25 @@ public class PlayerLandPage implements LandPage {
         return null;
     }
 
-    public List<Blog> getUserBlog() {
-        return null;
+    public List<Blog> getPlayersFavoriteBlog() {
+
+        PlayerBlog playerBlog = new PlayerBlog();
+        playerBlog.setBlogCreationDate(new Date().toString());
+        playerBlog.setBlogHeader("Hello Nandan!!");
+        playerBlog.setBlogDescription("Hello Mr. Nandan!, welcome to yor first blog.");
+
+        List<Blog> blogs = new ArrayList<>();
+        blogs.add(playerBlog);
+        blogs.add(playerBlog);
+        blogs.add(playerBlog);
+        blogs.add(playerBlog);
+        blogs.add(playerBlog);
+        blogs.add(playerBlog);
+        blogs.add(playerBlog);
+        blogs.add(playerBlog);
+        blogs.add(playerBlog);
+        blogs.add(playerBlog);
+
+        return blogs;
     }
 }

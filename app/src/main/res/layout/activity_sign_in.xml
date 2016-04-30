@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
@@ -10,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="@drawable/login_background"
         android:fillViewport="true">
 
         <LinearLayout
@@ -21,12 +21,13 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/iv_splash_ludusz_logo"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ludusz" />
+                android:src="@drawable/ludusz"
+                android:transitionName="@string/blog_activity_transition" />
 
             <TextView
                 android:id="@+id/textView"
@@ -40,7 +41,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55dp">
+                android:layout_marginTop="40dp">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -62,7 +63,7 @@
                     android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/et_user_name"
+                        android:id="@+id/et_sing_in_user_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -93,7 +94,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/et_user_password"
+                        android:id="@+id/et_sign_in_user_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -114,11 +115,14 @@
                 android:text="@string/signin" />
 
             <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/btn_forget_password"
+                android:id="@+id/btn_sign_in_forget_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:inputType="text"
+                android:paddingBottom="20dp"
+                android:paddingTop="8dp"
                 android:text="@string/forgot_your_password"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -127,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/or_sign_in_with" />
 
 
@@ -135,11 +139,11 @@
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="18dp"
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.AppCompatImageButton
-                    android:id="@+id/button6"
+                    android:id="@+id/btn_sign_in_facebook_login"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -148,7 +152,7 @@
                     android:text="New Button" />
 
                 <android.support.v7.widget.AppCompatImageButton
-                    android:id="@+id/button7"
+                    android:id="@+id/btn_sign_in_twitter_login"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -157,7 +161,7 @@
                     android:text="New Button" />
 
                 <android.support.v7.widget.AppCompatImageButton
-                    android:id="@+id/button8"
+                    android:id="@+id/btn_sign_in_google_login"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -178,7 +182,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btn_register_user"
+                android:id="@+id/btn_sign_in_register_user"
                 style="@style/MaterialButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

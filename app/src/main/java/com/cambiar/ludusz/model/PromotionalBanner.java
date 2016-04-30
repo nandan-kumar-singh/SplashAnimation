@@ -21,7 +21,7 @@ public class PromotionalBanner implements Banner {
     }
 
     @Override
-    public String getBHeader() {
+    public String getBannerHeader() {
         return bHeader;
     }
 
@@ -30,7 +30,7 @@ public class PromotionalBanner implements Banner {
     }
 
     @Override
-    public String getBDescription() {
+    public String getBannerDescription() {
         return bDescription;
     }
 
@@ -39,7 +39,7 @@ public class PromotionalBanner implements Banner {
     }
 
     @Override
-    public String getBImageUrl() {
+    public String getBannerImageUrl() {
         return bImageUrl;
     }
 
@@ -48,7 +48,7 @@ public class PromotionalBanner implements Banner {
     }
 
     @Override
-    public String getBStartDate() {
+    public String getBannerStartDate() {
         return bStartDate;
     }
 
@@ -57,7 +57,7 @@ public class PromotionalBanner implements Banner {
     }
 
     @Override
-    public String getBEndDate() {
+    public String getBannerEndDate() {
         return bEndDate;
     }
 

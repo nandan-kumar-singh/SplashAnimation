@@ -30,6 +30,9 @@
     <string name="event">EVENT</string>
     <string name="institute">INSTITUTE</string>
     <string name="sports_shop">SPORTS SHOP</string>
+    <string name="blob_text">As you can see this is a neat pattern in use which many of you would have seen. A perfect use case for this would be in apps </string>
+    <string name="last_match_score">Last Match Score</string>
+    <string name="blog_activity_transition">blog_activity_transition</string>
 
     <string-array name="nav_drawer_labels">
         <item>@string/nav_item_home</item>

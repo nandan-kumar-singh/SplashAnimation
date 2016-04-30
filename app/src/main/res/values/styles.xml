@@ -21,7 +21,19 @@
         <item name="android:fadingEdgeLength">8dp</item>
     </style>
 
-    <style name="MaterialTheme" parent="AppTheme" />
+    <style name="MaterialTheme" parent="AppTheme">
+
+    </style>
+
+
+    <style name="MaterialThemeDialog" parent="Theme.AppCompat.Light.Dialog.MinWidth">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/dark_black</item>
+    </style>
 
     <style name="PreferencesTheme" parent="AppTheme">
         <item name="colorAccent">@color/dark_black</item>

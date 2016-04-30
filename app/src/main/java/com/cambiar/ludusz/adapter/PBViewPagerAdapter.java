@@ -40,12 +40,12 @@ public class PBViewPagerAdapter extends PagerAdapter {
         LayoutInflater inflater = LayoutInflater.from(context);
         ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.layout_promotional_banner, container, false);
 
-        ((TextView) layout.findViewById(R.id.tv_banner_header)).setText(bannerList.get(position).getBHeader());
-        ((TextView) layout.findViewById(R.id.tv_banner_description)).setText(bannerList.get(position).getBDescription());
+        ((TextView) layout.findViewById(R.id.tv_banner_header)).setText(bannerList.get(position).getBannerHeader());
+        ((TextView) layout.findViewById(R.id.tv_banner_description)).setText(bannerList.get(position).getBannerDescription());
 
-        ((TextView) layout.findViewById(R.id.tv_banner_description)).setText(bannerList.get(position).getBDescription());
+        ((TextView) layout.findViewById(R.id.tv_banner_description)).setText(bannerList.get(position).getBannerDescription());
 
-        Picasso.with(context).load(bannerList.get(position).getBImageUrl()).into(((ImageView) layout.findViewById(R.id.iv_banner_image)));
+        Picasso.with(context).load(bannerList.get(position).getBannerImageUrl()).into(((ImageView) layout.findViewById(R.id.iv_banner_image)));
         container.addView(layout);
         return layout;
     }
