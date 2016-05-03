@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.cambiar.ludusz.R;
 import com.cambiar.ludusz.activities.MainActivity;
+import com.cambiar.ludusz.activities.SearchActivity;
 import com.cambiar.ludusz.adapter.LandingPageFavoriteBlogAdapter;
 import com.cambiar.ludusz.adapter.PBViewPagerAdapter;
 import com.cambiar.ludusz.model.Ludusz;
@@ -41,20 +42,21 @@ import java.lang.ref.WeakReference;
 
 import butterknife.ButterKnife;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
-    private static final String TAG = "HomeFragment";
-    private Toolbar mToolbar;
-    private static WeakReference<HomeFragment> homeFragmentWeakReference;
+public class PlayerLandingFragment extends Fragment implements View.OnClickListener {
+    private static final String TAG = "PlayerLandingFragment";
+    private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 21;
+
+    private static WeakReference<PlayerLandingFragment> homeFragmentWeakReference;
     private LandingPageFavoriteBlogAdapter landingPageFavoriteBlogAdapter;
 
-    public static HomeFragment getInstance() {
+    public static PlayerLandingFragment getInstance() {
         if (homeFragmentWeakReference == null) {
-            homeFragmentWeakReference = new WeakReference<>(new HomeFragment());
+            homeFragmentWeakReference = new WeakReference<>(new PlayerLandingFragment());
         }
         return homeFragmentWeakReference.get();
     }
 
-    public HomeFragment() {
+    public PlayerLandingFragment() {
     }
 
     @Override
@@ -100,13 +102,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setAdapter(landingPageFavoriteBlogAdapter);
 
-        Log.d(TAG,String.format("Total Item %s %s",landPage.getPlayersFavoriteBlog().size(),recyclerView.getChildCount()));
+        Log.d(TAG, String.format("Total Item %s %s", landPage.getPlayersFavoriteBlog().size(), recyclerView.getChildCount()));
 
         view.findViewById(R.id.ll_blog).setOnClickListener(this);
     }
 
     public void setUpToolbar(View view) {
-        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        Toolbar mToolbar; mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         mToolbar.setPadding(0, 0, 0, 0);
         ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
         // ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -158,7 +160,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onStop() {
         super.onStop();
-        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) ;
+        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
+        }
     }
 
     int PLACE_PICKER_REQUEST = 1;
@@ -196,6 +200,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    /*private void callPlaceAutocompleteActivityIntent() {
+        try {
+            Intent intent =
+                    new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                            .build(getActivity());
+            startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+//PLACE_AUTOCOMPLETE_REQUEST_CODE is integer for request code
+        } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+            // TODO: Handle the error.
+        }
+
+    }*/
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
@@ -203,6 +220,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 String toastMsg = String.format("Place: %s", place.getAddress().subSequence(0, 20));
                 Toast.makeText(getContext(), toastMsg, Toast.LENGTH_LONG).show();
             }
+            /*if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+                if (resultCode == Activity.RESULT_OK) {
+                    Place place = PlaceAutocomplete.getPlace(getContext(), data);
+                    Log.i(TAG, "Place:" + place.toString());
+                } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                    Status status = PlaceAutocomplete.getStatus(getContext(), data);
+                    Log.i(TAG, status.getStatusMessage());
+                } else if (requestCode == Activity.RESULT_CANCELED) {
+
+                }
+            }*/
         }
     }
 
@@ -217,10 +245,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_player_location: {
                 Toast.makeText(getContext(), "Hello Location", Toast.LENGTH_SHORT).show();
                 placePicker();
+                //callPlaceAutocompleteActivityIntent();
                 break;
             }
             case R.id.img_btn_search: {
                 Toast.makeText(getContext(), "Hello Search", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), SearchActivity.class));
                 break;
             }
             case R.id.img_btn_notification: {

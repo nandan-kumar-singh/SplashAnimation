@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="search_tab_items">
+        <item>All</item>
+        <item>Coaches</item>
+        <item>Events</item>
+        <item>Courses</item>
+        <item>Centers</item>
+        <item>Institutes</item>
+        <item>Players</item>
+    </string-array>
+</resources>

@@ -15,20 +15,20 @@
         android:theme="@style/MaterialTheme">
         <activity
             android:name=".activities.MainActivity"
-            android:launchMode="singleInstance">
+            android:launchMode="singleTop">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activities.SettingsActivity"
             android:theme="@style/PreferencesTheme" />
-        <activity android:name=".activities.SplashActivity">
+        <activity
+            android:name=".activities.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-                />
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
@@ -39,12 +39,22 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".activities.SignInActivity" />
-        <activity android:name=".activities.RegisterUserActivity" />
-        <activity android:name=".activities.GoogleSignInActivity" />
+        <activity
+            android:name=".activities.SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.RegisterUserActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.GoogleSignInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.AppDescriptionActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ResetPasswordActivity"
-            android:theme="@style/MaterialThemeDialog"></activity>
+            android:theme="@style/MaterialThemeDialog" />
+        <activity android:name=".activities.SearchActivity" />
     </application>
 
 </manifest>

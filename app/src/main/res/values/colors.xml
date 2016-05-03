@@ -10,6 +10,7 @@
     <color name="red_transparent">#45990000</color>
     <color name="white">#F3F3F3</color>
     <color name="white_shade">#e3e3e3</color>
+    <color name="tab_unselected">#B3B3B3</color>
     <color name="whitet">#55ffffff</color>
     <color name="whitet22">#88ffffff</color>
     <color name="white_shadet">#55e3e3e3</color>
@@ -27,4 +28,5 @@
     <color name="orange_dark">#E64A19</color>
     <color name="indigo">#303F9F</color>
     <color name="color_reset_password">#A63C43</color>
+    <color name="yellow">#FDB709</color>
 </resources>

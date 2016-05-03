@@ -1,13 +1,12 @@
 package com.cambiar.ludusz.activities;
 
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.transition.Fade;
 import android.transition.Slide;
 import android.view.Gravity;
@@ -16,7 +15,7 @@ import android.view.View;
 import com.cambiar.ludusz.R;
 import com.cambiar.ludusz.fragments.DrawerFragment;
 import com.cambiar.ludusz.fragments.GraphFragment;
-import com.cambiar.ludusz.fragments.HomeFragment;
+import com.cambiar.ludusz.fragments.PlayerLandingFragment;
 import com.cambiar.ludusz.fragments.ProfileFragment;
 import com.cambiar.ludusz.model.Ludusz;
 
@@ -29,14 +28,11 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Ludusz.setUser(Ludusz.User.PLAYER);
         //setUp drawer layout
+        Ludusz.setUser(Ludusz.User.PLAYER);
         drawerFragment = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setDrawerListener(this);
         displayView(0);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-
     }
 
     @Override
@@ -50,7 +46,7 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
         String title = getString(R.string.app_name);
         switch (position) {
             case 0:
-                fragment = HomeFragment.getInstance();
+                fragment = PlayerLandingFragment.getInstance();
                 break;
             case 1:
                 fragment = ProfileFragment.getInstance();
@@ -90,8 +86,8 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
     public void onBackPressed() {
 
         if (doubleClickToExit) {
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            MainActivity.this.finish();
+            /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Exit").setMessage("Do you want to exit?").setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -103,7 +99,7 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
                     MainActivity.this.finish();
                 }
             }).create().show();
-
+*/
         }
 
         new Handler().postDelayed(new Runnable() {
@@ -114,9 +110,9 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
             }
         }, 700);
 
-        //check if the current fragment is HomeFragment or not
-        if (HomeFragment.getInstance().isVisible()) {
-            //Toast.makeText(this,"Hello HomeFragment",Toast.LENGTH_SHORT).show();
+        //check if the current fragment is PlayerLandingFragment or not
+        if (PlayerLandingFragment.getInstance().isVisible()) {
+            //Toast.makeText(this,"Hello PlayerLandingFragment",Toast.LENGTH_SHORT).show();
         } else {
             getSupportFragmentManager().popBackStack();
         }
