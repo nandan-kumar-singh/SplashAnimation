@@ -21,6 +21,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by vibes on 8/3/16.
@@ -115,18 +117,28 @@ public class AndroidUtil {
         return simpleClass;
     }
 
-    public static boolean validateEmail(String text) {
-        boolean isValid = false;
-        isValid = android.util.Patterns.EMAIL_ADDRESS.matcher(text).matches();
-        return isValid;
+    public static boolean isValidEmail(String email) {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 
-    public static boolean validatePassword(String text) {
-        boolean isValid = false;
-        isValid = text.length() >= 6;
-        return isValid;
+    public static boolean isValidPassword(String text) {
+        if(text==null&&text.trim().equals(""))
+            return false;
+        return text.length() >= 6;
     }
-
+    public static boolean isValidMobileNumber(String mobileNumber)
+    {
+        if (mobileNumber.length()!=10) {
+            return false;
+        } else {
+            return android.util.Patterns.PHONE.matcher(mobileNumber).matches();
+        }
+    }
     /****
      * Method for Setting the Height of the ListView dynamically.
      * *** Hack to fix the issue of not showing all the items of the ListView
@@ -176,6 +188,7 @@ public class AndroidUtil {
         params.height = totalHeight + (3 * (adapter.getItemCount() - 1));
         recyclerView.setLayoutParams(params);
     }
+
     public static String getAppVersion(Context context) throws PackageManager.NameNotFoundException {
         PackageManager manager = context.getPackageManager();
         PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);

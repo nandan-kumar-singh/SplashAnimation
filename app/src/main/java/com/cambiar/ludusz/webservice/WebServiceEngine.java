@@ -16,7 +16,7 @@ import okhttp3.Request;
  * Created by vibes on 16/4/16.
  */
 public class WebServiceEngine {
-    private static OkHttpClient getCachedOkHttpClient(final Context context) {
+    public static OkHttpClient getCachedOkHttpClient(final Context context) {
         File httpCacheDirectory = new File(context.getCacheDir(), "cache_file");
         Cache cache = new Cache(httpCacheDirectory, 20 * 1024 * 1024);
         OkHttpClient.Builder okHttpClient = new OkHttpClient().newBuilder();

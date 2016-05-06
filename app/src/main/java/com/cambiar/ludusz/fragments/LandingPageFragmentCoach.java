@@ -6,13 +6,17 @@ package com.cambiar.ludusz.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,21 +46,22 @@ import java.lang.ref.WeakReference;
 
 import butterknife.ButterKnife;
 
-public class PlayerLandingFragment extends Fragment implements View.OnClickListener {
-    private static final String TAG = "PlayerLandingFragment";
-    private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 21;
+public class LandingPageFragmentCoach extends Fragment implements View.OnClickListener {
+    private static final String TAG = LandingPageFragmentCoach.class.getSimpleName();
 
-    private static WeakReference<PlayerLandingFragment> homeFragmentWeakReference;
+    private static WeakReference<LandingPageFragmentCoach> homeFragmentWeakReference;
     private LandingPageFavoriteBlogAdapter landingPageFavoriteBlogAdapter;
+    int PLACE_PICKER_REQUEST = 1;
+    private GoogleApiClient mGoogleApiClient;
 
-    public static PlayerLandingFragment getInstance() {
+    public static LandingPageFragmentCoach getInstance() {
         if (homeFragmentWeakReference == null) {
-            homeFragmentWeakReference = new WeakReference<>(new PlayerLandingFragment());
+            homeFragmentWeakReference = new WeakReference<>(new LandingPageFragmentCoach());
         }
         return homeFragmentWeakReference.get();
     }
 
-    public PlayerLandingFragment() {
+    public LandingPageFragmentCoach() {
     }
 
     @Override
@@ -72,7 +77,7 @@ public class PlayerLandingFragment extends Fragment implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_landing_page_coach, container, false);
         ButterKnife.bind(getActivity(), rootView);
         setUpToolbar(rootView);
         initViews(rootView);
@@ -103,12 +108,21 @@ public class PlayerLandingFragment extends Fragment implements View.OnClickListe
         recyclerView.setAdapter(landingPageFavoriteBlogAdapter);
 
         Log.d(TAG, String.format("Total Item %s %s", landPage.getPlayersFavoriteBlog().size(), recyclerView.getChildCount()));
-
+//set listener
         view.findViewById(R.id.ll_blog).setOnClickListener(this);
+        view.findViewById(R.id.ll_calendar).setOnClickListener(this);
+        view.findViewById(R.id.ll_near_by).setOnClickListener(this);
+        view.findViewById(R.id.ll_share_experiance).setOnClickListener(this);
+
+        view.findViewById(R.id.btn_explore_coach).setOnClickListener(this);
+        view.findViewById(R.id.btn_explore_institute).setOnClickListener(this);
+        view.findViewById(R.id.btn_explore_player).setOnClickListener(this);
+        view.findViewById(R.id.btn_explore_event).setOnClickListener(this);
     }
 
     public void setUpToolbar(View view) {
-        Toolbar mToolbar; mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        Toolbar mToolbar;
+        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         mToolbar.setPadding(0, 0, 0, 0);
         ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
         // ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -147,6 +161,30 @@ public class PlayerLandingFragment extends Fragment implements View.OnClickListe
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_landing_page_player, menu);
         //MenuItem myMenuItem = menu.findItem(R.id.action_notification);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+        searchView = (SearchView) searchItem.getActionView();
+        MenuItemCompat.setOnActionExpandListener(searchItem, new MenuItemCompat.OnActionExpandListener() {
+
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                // Set styles for expanded state here
+                if (((MainActivity) getActivity()).getSupportActionBar() != null) {
+                    ((MainActivity) getActivity()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.RED));
+                }
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                // Set styles for collapsed state here
+                if (((MainActivity) getActivity()).getSupportActionBar() != null) {
+                    ((MainActivity) getActivity()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
+                }
+                return true;
+            }
+        });
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -165,8 +203,6 @@ public class PlayerLandingFragment extends Fragment implements View.OnClickListe
         }
     }
 
-    int PLACE_PICKER_REQUEST = 1;
-    GoogleApiClient mGoogleApiClient;
 
     void placePicker() {
         mGoogleApiClient = new GoogleApiClient
@@ -250,17 +286,68 @@ public class PlayerLandingFragment extends Fragment implements View.OnClickListe
             }
             case R.id.img_btn_search: {
                 Toast.makeText(getContext(), "Hello Search", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getContext(), SearchActivity.class));
                 break;
             }
             case R.id.img_btn_notification: {
                 Toast.makeText(getContext(), "Hello Notification", Toast.LENGTH_SHORT).show();
                 break;
             }
-            case R.id.ll_blog: {
-                Toast.makeText(getContext(), "Hello Blog", Toast.LENGTH_SHORT).show();
+
+            case R.id.ll_share_experiance: {
+                Toast.makeText(getContext(), "Hello ll_share_experiance", Toast.LENGTH_SHORT).show();
                 break;
+
             }
+            case R.id.ll_near_by: {
+                Toast.makeText(getContext(), "Hello ll_near_by", Toast.LENGTH_SHORT).show();
+                break;
+
+            }
+            case R.id.ll_calendar: {
+                Toast.makeText(getContext(), "Hello ll_calendar", Toast.LENGTH_SHORT).show();
+                break;
+
+            }
+            case R.id.ll_blog: {
+                Toast.makeText(getContext(), "Hello ll_blog", Toast.LENGTH_SHORT).show();
+                break;
+
+            }
+            case R.id.btn_explore_coach: {
+                //Toast.makeText(getContext(), "Hello btn_explore_coach", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                intent.putExtra("tab_id", 1);
+                startActivity(intent);
+                break;
+
+            }
+            case R.id.btn_explore_institute: {
+                //Toast.makeText(getContext(), "Hello btn_explore_institute", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                intent.putExtra("tab_id", 5);
+                startActivity(intent);
+                break;
+
+            }
+            case R.id.btn_explore_player: {
+                //Toast.makeText(getContext(), "Hello btn_explore_player", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                intent.putExtra("tab_id", 6);
+                startActivity(intent);
+                break;
+
+            }
+            case R.id.btn_explore_event: {
+                //Toast.makeText(getContext(), "Hello btn_explore_event", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), SearchActivity.class);
+                intent.putExtra("tab_id", 2);
+                startActivity(intent);
+                break;
+
+            }
+
+            default:
+                break;
         }
     }
 }

@@ -18,23 +18,22 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.cambiar.ludusz.R;
 import com.cambiar.ludusz.adapter.NavigationDrawerAdapter;
 import com.cambiar.ludusz.model.NavDrawerItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DrawerFragment extends Fragment {
 
     private static String TAG = DrawerFragment.class.getSimpleName();
     private static String[] titles = null;
-    private RecyclerView recyclerView;
+
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-    private NavigationDrawerAdapter adapter;
+    //private
 
     private View containerView;
 
@@ -72,9 +71,9 @@ public class DrawerFragment extends Fragment {
         // Inflating view layout
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
 
-        recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
+        RecyclerView recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
 
-        adapter = new NavigationDrawerAdapter(getActivity(), getData());
+        NavigationDrawerAdapter adapter = new NavigationDrawerAdapter(getActivity(), getData());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
@@ -180,7 +179,6 @@ public class DrawerFragment extends Fragment {
         public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
         }
-
 
     }
 }

@@ -110,6 +110,7 @@
                 android:padding="2dp">
 
                 <Button
+                    android:id="@+id/btn_explore_coach"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="1dp"
@@ -120,6 +121,7 @@
                     android:textColor="@color/white" />
 
                 <Button
+                    android:id="@+id/btn_explore_institute"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -152,6 +154,7 @@
                 android:paddingRight="2dp">
 
                 <Button
+                    android:id="@+id/btn_explore_player"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -166,6 +169,7 @@
                     android:textColor="@color/white" />
 
                 <Button
+                    android:id="@+id/btn_explore_event"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -201,6 +205,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_share_experiance"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_landing_page_button_height"
                 android:background="@drawable/button_selector_black_shade"
@@ -241,12 +246,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_near_by"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_landing_page_button_height"
                 android:layout_marginTop="2dp"
                 android:background="@drawable/button_selector_black_shade"
                 android:clickable="true"
                 android:elevation="2dp"
+                android:orientation="horizontal"
                 android:paddingLeft="@dimen/landing_page_left_margin">
 
                 <ImageView
@@ -284,177 +291,7 @@
 
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/player_landing_page_button_height"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/button_selector_red"
-                android:baselineAligned="false"
-                android:clickable="true"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/landing_page_left_margin"
-                android:paddingStart="@dimen/landing_page_left_margin">
-
-                <ImageView
-                    android:layout_width="@dimen/player_landing_page_imageview_width"
-                    android:layout_height="match_parent"
-                    android:layout_margin="3dp"
-                    android:alpha=".9"
-                    android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_action_my_performance" />
-
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/textView11"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="@string/my_performance"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/white" />
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="@dimen/player_landing_page_imageview_width"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:alpha=".6"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_action_arrow_right" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="6dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/player_landing_page_button_height"
-                    android:layout_marginTop="2dp"
-                    android:background="@color/white_shadet"
-                    android:baselineAligned="false"
-                    android:elevation="1dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/landing_page_left_margin"
-                    android:paddingStart="@dimen/landing_page_left_margin">
-
-                    <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/textView14"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight=".55"
-                        android:padding="2dp"
-                        android:shadowDx="3"
-                        android:shadowRadius="1"
-                        android:text="@string/last_match_score"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/black" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <android.support.v7.widget.AppCompatTextView
-                                android:id="@+id/textView17"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:padding="2dp"
-                                android:shadowDx="3"
-                                android:shadowRadius="1"
-                                android:text="Numbers"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/black" />
-
-                            <android.support.v7.widget.AppCompatTextView
-                                android:id="@+id/textView166"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:padding="2dp"
-                                android:shadowDx="3"
-                                android:shadowRadius="1"
-                                android:text="12"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <android.support.v7.widget.AppCompatTextView
-                                android:id="@+id/textView19"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:padding="2dp"
-                                android:shadowDx="3"
-                                android:shadowRadius="1"
-                                android:text="Runs/Goals"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/black" />
-
-                            <android.support.v7.widget.AppCompatTextView
-                                android:id="@+id/textView192"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:padding="2dp"
-                                android:shadowDx="3"
-                                android:shadowRadius="1"
-                                android:text="123/1"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/player_landing_page_button_height"
-                    android:layout_marginTop="2dp"
-                    android:background="@color/white"
-                    android:baselineAligned="false"
-                    android:clickable="true"
-                    android:elevation="2dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/landing_page_left_margin"
-                    android:paddingStart="@dimen/landing_page_left_margin">
-
-                    <android.support.v7.widget.AppCompatTextView
-                        android:id="@+id/textView15"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:padding="2dp"
-                        android:shadowDx="3"
-                        android:shadowRadius="1"
-                        android:text="Tracking"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-            </LinearLayout>
-
-
-            <LinearLayout
+                android:id="@+id/ll_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_landing_page_button_height"
                 android:layout_marginTop="2dp"

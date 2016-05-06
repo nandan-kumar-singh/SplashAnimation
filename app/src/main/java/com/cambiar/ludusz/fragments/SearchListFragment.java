@@ -14,13 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cambiar.ludusz.R;
-import com.cambiar.ludusz.adapter.LandingPageFavoriteBlogAdapter;
 import com.cambiar.ludusz.adapter.SearchRecyclerViewAdapter;
 import com.cambiar.ludusz.userrole.PlayerLandPage;
 
 
 public class SearchListFragment extends Fragment {
-    private static final String TAG = "GraphFragment";
+    private static final String TAG = SearchListFragment.class.getSimpleName();
 
     public SearchListFragment() {
 

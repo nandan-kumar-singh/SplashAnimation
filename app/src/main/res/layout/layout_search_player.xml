@@ -24,18 +24,24 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:elevation="2dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_people"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="6dp"
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="6dp"
-                android:layout_marginBottom="6dp"
-                android:layout_alignParentTop="true" />
+                android:elevation="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_people" />
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView18"
+                android:layout_alignStart="@+id/textView18"
+                android:layout_alignTop="@+id/view76"
+                android:layout_gravity="top"
+                android:layout_toLeftOf="@+id/view76"
+                android:layout_toStartOf="@+id/view76"
                 android:padding="2dp"
                 android:shadowColor="@color/white"
                 android:shadowDx="3"
@@ -43,14 +49,10 @@
                 android:text="Ansuman Gaekwad"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textStyle="bold"
-                android:layout_gravity="top"
-                android:layout_alignTop="@+id/view"
-                android:layout_toLeftOf="@+id/view"
-                android:layout_alignLeft="@+id/textView18"
-                android:layout_alignStart="@+id/textView18" />
+                android:visibility="visible" />
 
             <LinearLayout
-                android:id="@+id/view"
+                android:id="@+id/view76"
                 android:layout_width="55dp"
                 android:layout_height="28dp"
                 android:layout_alignParentEnd="true"
@@ -62,7 +64,7 @@
                 android:weightSum="100">
 
                 <ImageView
-                    android:id="@+id/imageButton"
+                    android:id="@+id/imageButton44"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
@@ -72,7 +74,40 @@
                     android:src="@drawable/ic_action_thumb_up" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/textView17"
+                    android:id="@+id/textView153"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="45"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="11"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/view734"
+                android:layout_width="55dp"
+                android:layout_height="28dp"
+                android:background="@drawable/yellow_round_corner_box"
+                android:weightSum="100"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/view76"
+                android:layout_toStartOf="@+id/view76">
+
+                <ImageView
+                    android:id="@+id/imageButton455"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:padding="0dp"
+                    android:scaleType="fitCenter"
+                    android:shadowColor="@color/colorPrimary"
+                    android:src="@drawable/ic_action_thumb_up" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/textView1543"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="45"
@@ -89,12 +124,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/imageView6"
+                android:layout_below="@+id/view76"
                 android:layout_toEndOf="@+id/imageView6"
-                android:layout_toLeftOf="@+id/view"
+                android:layout_toLeftOf="@+id/view76"
                 android:layout_toRightOf="@+id/imageView6"
                 android:text="E-22 Sec 8 Noida, New Delhi"
-                android:textSize="11sp"
-                android:layout_below="@+id/view" />
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/textView22"
@@ -104,9 +139,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
+                android:layout_below="@+id/imageView6"
                 android:text="Coaching Offered:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_below="@+id/imageView6" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/textView23"
@@ -114,9 +149,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView22"
                 android:layout_alignStart="@+id/textView22"
+                android:layout_below="@+id/textView22"
                 android:text="Offer Coaching to:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_below="@+id/textView22" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/textView25"
@@ -126,9 +161,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignStart="@+id/textView23"
+                android:layout_below="@+id/textView23"
                 android:text="Fee:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_below="@+id/textView23" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/textView26"
@@ -138,9 +173,9 @@
                 android:layout_alignLeft="@+id/textView25"
                 android:layout_alignRight="@+id/linearLayout3"
                 android:layout_alignStart="@+id/textView25"
+                android:layout_below="@+id/textView25"
                 android:text="Experiance:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_below="@+id/textView25" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -148,10 +183,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:layout_below="@+id/textView26"
                 android:layout_marginBottom="3dp"
                 android:gravity="end"
-                android:orientation="horizontal"
-                android:layout_below="@+id/textView26">
+                android:orientation="horizontal">
 
                 <android.support.v7.widget.AppCompatImageButton
                     android:id="@+id/button"
@@ -308,6 +343,25 @@
                         android:text="+10"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/dark_black" />
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:id="@+id/button6"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/yellow_round_corner_box">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:src="@drawable/ic_action_review"
+                        android:text="Compare +"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/dark_black"
+                        android:visibility="visible" />
                 </android.support.v7.widget.LinearLayoutCompat>
             </LinearLayout>
 

@@ -17,13 +17,13 @@ public class AppDescriptionActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(AppDescriptionActivity.this, MainActivity.class);
+                Intent intent = new Intent(AppDescriptionActivity.this, SignInActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 overridePendingTransition(R.anim.zoom_in, R.anim.zoom_exit);
                 AppDescriptionActivity.this.finish();
             }
-        }, 4 * 1000);
+        }, 2 * 1000);
     }
 
     @Override

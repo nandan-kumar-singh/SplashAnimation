@@ -35,11 +35,11 @@
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/view"
+                android:layout_alignBottom="@+id/view76"
                 android:layout_alignLeft="@+id/textView18"
                 android:layout_alignParentTop="true"
                 android:layout_alignStart="@+id/textView18"
-                android:layout_toLeftOf="@+id/view"
+                android:layout_toLeftOf="@+id/view76"
                 android:padding="2dp"
                 android:shadowColor="@color/white"
                 android:shadowDx="3"
@@ -55,7 +55,7 @@
                 android:layout_above="@+id/textView19"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@+id/view"
+                android:layout_below="@+id/view76"
                 android:layout_toRightOf="@+id/imageView6"
                 android:text="@string/blob_text"
                 android:textSize="11sp" />
@@ -71,7 +71,7 @@
                 android:textSize="10sp" />
 
             <LinearLayout
-                android:id="@+id/view"
+                android:id="@+id/view76"
                 android:layout_width="55dp"
                 android:layout_height="28dp"
                 android:layout_alignParentEnd="true"

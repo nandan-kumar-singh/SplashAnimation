@@ -1,6 +1,5 @@
 package com.cambiar.ludusz.activities;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,14 +14,16 @@ import android.view.View;
 import com.cambiar.ludusz.R;
 import com.cambiar.ludusz.fragments.DrawerFragment;
 import com.cambiar.ludusz.fragments.GraphFragment;
-import com.cambiar.ludusz.fragments.PlayerLandingFragment;
+import com.cambiar.ludusz.fragments.LandingPageFragmentCoach;
+import com.cambiar.ludusz.fragments.LandingPageFragmentCoordinator;
+import com.cambiar.ludusz.fragments.LandingPageFragmentEventOrganizer;
+import com.cambiar.ludusz.fragments.LandingPageFragmentPlayer;
 import com.cambiar.ludusz.fragments.ProfileFragment;
 import com.cambiar.ludusz.model.Ludusz;
 
 public class MainActivity extends BaseActivity implements DrawerFragment.FragmentDrawerListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     public static DrawerFragment drawerFragment;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,33 +33,68 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
         Ludusz.setUser(Ludusz.User.PLAYER);
         drawerFragment = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setDrawerListener(this);
-        displayView(0);
+        displayView(0, Ludusz.getUser());
     }
 
     @Override
     public void onDrawerItemSelected(View view, int position) {
-        displayView(position);
+        displayView(position, Ludusz.getUser());
     }
 
-    public void displayView(int position) {
+    public void displayView(int position, Ludusz.User user) {
         Fragment fragment = null;
-
-        String title = getString(R.string.app_name);
-        switch (position) {
-            case 0:
-                fragment = PlayerLandingFragment.getInstance();
+        switch (user) {
+            case PLAYER: {
+                switch (position) {
+                    case 0:
+                        fragment = LandingPageFragmentPlayer.getInstance();
+                        break;
+                    case 1:
+                        fragment = ProfileFragment.getInstance();
+                        break;
+                    case 2:
+                        fragment = GraphFragment.getInstance();
+                        break;
+                    default:
+                        break;
+                }
                 break;
-            case 1:
-                fragment = ProfileFragment.getInstance();
-                title = getString(R.string.nav_item_my_profile);
+            }
+            case COACH: {
+                switch (position) {
+                    case 0:
+                        fragment = LandingPageFragmentCoach.getInstance();
+                        break;
+                    default:
+                        break;
+                }
                 break;
-            case 2:
-                fragment = GraphFragment.getInstance();
-                title = getString(R.string.nav_item_my_profile);
+            }
+            case CO_ORDINATOR: {
+                switch (position) {
+                    case 0:
+                        fragment = LandingPageFragmentCoordinator.getInstance();
+                        break;
+                    default:
+                        break;
+                }
                 break;
+            }
+            case EVENT_ORGANISER: {
+                switch (position) {
+                    case 0:
+                        fragment = LandingPageFragmentEventOrganizer.getInstance();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            }
             default:
                 break;
+
         }
+
 
         if (fragment != null) {
             //for slide animation on fragment transition
@@ -110,11 +146,43 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
             }
         }, 700);
 
-        //check if the current fragment is PlayerLandingFragment or not
-        if (PlayerLandingFragment.getInstance().isVisible()) {
-            //Toast.makeText(this,"Hello PlayerLandingFragment",Toast.LENGTH_SHORT).show();
-        } else {
-            getSupportFragmentManager().popBackStack();
+        //check if the current fragment is LandingPageFragmentPlayer or not
+        switch (Ludusz.getUser())
+        {
+            case PLAYER:{
+                if (LandingPageFragmentPlayer.getInstance().isVisible()) {
+                    //Toast.makeText(this,"Hello LandingPageFragmentPlayer",Toast.LENGTH_SHORT).show();
+                } else {
+                    getSupportFragmentManager().popBackStack();
+                }
+                break;
+            }
+            case COACH:{
+                if (LandingPageFragmentCoach.getInstance().isVisible()) {
+                    //Toast.makeText(this,"Hello LandingPageFragmentPlayer",Toast.LENGTH_SHORT).show();
+                } else {
+                    getSupportFragmentManager().popBackStack();
+                }
+                break;
+            }
+            case CO_ORDINATOR:{
+                if (LandingPageFragmentCoordinator.getInstance().isVisible()) {
+                    //Toast.makeText(this,"Hello LandingPageFragmentPlayer",Toast.LENGTH_SHORT).show();
+                } else {
+                    getSupportFragmentManager().popBackStack();
+                }
+                break;
+            }
+            case EVENT_ORGANISER:{
+                if (LandingPageFragmentEventOrganizer.getInstance().isVisible()) {
+                    //Toast.makeText(this,"Hello LandingPageFragmentPlayer",Toast.LENGTH_SHORT).show();
+                } else {
+                    getSupportFragmentManager().popBackStack();
+                }
+                break;
+            }
+            default:
+                break;
         }
         doubleClickToExit = !doubleClickToExit;
     }

@@ -20,8 +20,8 @@ import com.cambiar.ludusz.R;
 import com.cambiar.ludusz.adapter.SearchViewPagerAdapter;
 import com.cambiar.ludusz.fragments.SearchListFragment;
 
-
 public class SearchActivity extends BaseActivity implements View.OnClickListener {
+    private static final String TAG = SearchActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,15 +66,28 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void initViews() {
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpagerContainer);
-        viewPager.setScrollContainer(false);
-        viewPager.setHorizontalScrollBarEnabled(false);
-        viewPager.setOffscreenPageLimit(0);
-        setupViewPager(viewPager);
-        tabLayout.setupWithViewPager(viewPager);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout_search);
+        if (tabLayout != null)
+            tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpagerContainer);
+        if (viewPager != null) {
+            viewPager.setScrollContainer(false);
+            viewPager.setHorizontalScrollBarEnabled(false);
+            viewPager.setOffscreenPageLimit(0);
+        }
+
+        setupViewPager(viewPager);
+
+        if (tabLayout != null)
+            tabLayout.setupWithViewPager(viewPager);
+
+        if (getIntent().hasExtra("tab_id")) {
+            if (tabLayout != null)
+                tabLayout.setScrollPosition(getIntent().getIntExtra("tab_id", 0), 0f, true);
+            if (viewPager != null)
+                viewPager.setCurrentItem(getIntent().getIntExtra("tab_id", 0));
+        }
     }
 
     private void setupViewPager(ViewPager viewPager) {

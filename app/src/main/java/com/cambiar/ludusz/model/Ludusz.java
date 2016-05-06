@@ -7,7 +7,7 @@ import android.app.Application;
  */
 public class Ludusz extends Application{
     private static User _user;
-
+    private static UserData userData;
     public static User getUser() {
         return _user;
     }

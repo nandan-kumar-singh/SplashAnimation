@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
@@ -38,7 +39,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55dp">
+                android:layout_marginTop="30dp">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -49,15 +50,16 @@
                     android:layout_marginRight="-5dp"
                     android:paddingBottom="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/user" />
+                    android:src="@drawable/ic_action_user" />
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/til_user_name"
+                    android:id="@+id/til_register_user_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    app:errorTextAppearance="@style/error_appearance">
 
                     <EditText
                         android:id="@+id/et_user_name"
@@ -65,7 +67,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="Name"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName|textCapWords"
+                        android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -82,15 +85,16 @@
                     android:layout_marginRight="-5dp"
                     android:paddingBottom="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_action_lock" />
+                    android:src="@drawable/ic_action_email" />
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/til_user_email"
+                    android:id="@+id/til_register_user_email"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    app:errorTextAppearance="@style/error_appearance">
 
                     <EditText
                         android:id="@+id/et_user_email"
@@ -98,7 +102,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="Email"
-                        android:inputType="textPersonName" />
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -115,23 +120,24 @@
                     android:layout_marginRight="-5dp"
                     android:paddingBottom="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/user" />
+                    android:src="@drawable/ic_action_country" />
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/til_user_country"
+                    android:id="@+id/til_register_user_country"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    app:errorTextAppearance="@style/error_appearance">
 
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/acet_user_country"
+                    <android.support.v7.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/et_user_country"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="Country"
-                        android:inputType="textPersonName" />
+                        android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -148,23 +154,25 @@
                     android:layout_marginRight="-5dp"
                     android:paddingBottom="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/user" />
+                    android:src="@drawable/ic_action_mobile" />
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/til_user_name"
+                    android:id="@+id/til_register_user_mobile"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    app:errorTextAppearance="@style/error_appearance">
 
                     <EditText
-                        android:id="@+id/et_user_phone"
+                        android:id="@+id/et_user_mobile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="Phone number"
-                        android:inputType="textPersonName" />
+                        android:inputType="phone"
+                        android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -181,15 +189,16 @@
                     android:layout_marginRight="-5dp"
                     android:paddingBottom="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_action_lock" />
+                    android:src="@drawable/ic_action_lock_half" />
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/til_user_name"
+                    android:id="@+id/til_register_user_password"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    app:errorTextAppearance="@style/error_appearance">
 
                     <EditText
                         android:id="@+id/et_user_password"
@@ -197,7 +206,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="Password"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPassword"
+                        android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -214,15 +224,16 @@
                     android:layout_marginRight="-5dp"
                     android:paddingBottom="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_action_lock" />
+                    android:src="@drawable/ic_action_lock" />
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/til_user_name"
+                    android:id="@+id/til_register_user_re_password"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    app:errorTextAppearance="@style/error_appearance">
 
                     <EditText
                         android:id="@+id/et_user_re_password"
@@ -230,7 +241,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="Re-enter Password"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPassword"
+                        android:singleLine="true" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 

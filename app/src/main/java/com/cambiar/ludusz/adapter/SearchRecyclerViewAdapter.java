@@ -40,7 +40,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.layout_search_coach, parent, false);
+        View view = inflater.inflate(R.layout.layout_search_player, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }

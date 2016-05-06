@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -9,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/login_background"
-        >
+        android:background="@drawable/login_background">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,33 +41,36 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp">
+                android:layout_gravity="left"
+                android:layout_marginTop="30dp">
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="22dp"
-                    android:layout_gravity="bottom"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginBottom="5dp"
                     android:layout_marginEnd="-5dp"
                     android:layout_marginRight="-5dp"
                     android:paddingBottom="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/user" />
+                    android:src="@drawable/ic_action_user" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_user_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:hint="@string/user_name"
+                    android:orientation="vertical"
+                    app:errorTextAppearance="@style/error_appearance">
 
                     <EditText
-                        android:id="@+id/et_sing_in_user_name"
+                        android:id="@+id/et_sign_in_user_name"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:ems="10"
-                        android:hint="@string/user_name"
                         android:inputType="textPersonName"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
                 </android.support.design.widget.TextInputLayout>
@@ -75,23 +78,26 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="left">
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="22dp"
-                    android:layout_gravity="bottom"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginBottom="5dp"
                     android:layout_marginEnd="-5dp"
                     android:layout_marginRight="-5dp"
                     android:paddingBottom="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@mipmap/ic_action_lock" />
+                    android:src="@drawable/ic_action_lock" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/til_user_password"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    app:errorTextAppearance="@style/error_appearance">
 
                     <EditText
                         android:id="@+id/et_sign_in_user_password"
@@ -109,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/button_selector_round_corner"
                 android:inputType="text"
                 android:text="@string/signin" />
@@ -122,7 +128,7 @@
                 android:gravity="center"
                 android:inputType="text"
                 android:paddingBottom="20dp"
-                android:paddingTop="8dp"
+                android:paddingTop="5dp"
                 android:text="@string/forgot_your_password"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -134,12 +140,11 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/or_sign_in_with" />
 
-
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.AppCompatImageButton
