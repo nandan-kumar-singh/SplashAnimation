@@ -66,6 +66,6 @@ public class Data {
 
     @Override
     public String toString() {
-        return "ClassPojo [user_name = " + user_name + ", user_type = " + user_type + ", user_key = " + user_key + ", tag = " + tag + ", user_mobile = " + user_mobile + ", user_email = " + user_email + "]";
+        return "[user_name = " + user_name + ", user_type = " + user_type + ", user_key = " + user_key + ", tag = " + tag + ", user_mobile = " + user_mobile + ", user_email = " + user_email + "]";
     }
 }

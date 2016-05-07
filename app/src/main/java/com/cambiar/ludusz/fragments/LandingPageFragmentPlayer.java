@@ -30,12 +30,11 @@ import android.widget.Toast;
 
 import com.cambiar.ludusz.R;
 import com.cambiar.ludusz.activities.MainActivity;
-import com.cambiar.ludusz.activities.NearByActivity;
 import com.cambiar.ludusz.activities.SearchActivity;
 import com.cambiar.ludusz.adapter.LandingPageFavoriteBlogAdapter;
 import com.cambiar.ludusz.adapter.PBViewPagerAdapter;
 import com.cambiar.ludusz.model.Ludusz;
-import com.cambiar.ludusz.userrole.PlayerLandPage;
+import com.cambiar.ludusz.userModel.PlayerLandPage;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;

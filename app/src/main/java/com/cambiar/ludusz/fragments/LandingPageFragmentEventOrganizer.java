@@ -33,7 +33,7 @@ import com.cambiar.ludusz.activities.SearchActivity;
 import com.cambiar.ludusz.adapter.LandingPageFavoriteBlogAdapter;
 import com.cambiar.ludusz.adapter.PBViewPagerAdapter;
 import com.cambiar.ludusz.model.Ludusz;
-import com.cambiar.ludusz.userrole.PlayerLandPage;
+import com.cambiar.ludusz.userModel.PlayerLandPage;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.Place;

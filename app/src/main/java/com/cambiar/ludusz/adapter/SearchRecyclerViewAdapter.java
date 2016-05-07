@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.cambiar.ludusz.R;
 import com.cambiar.ludusz.interfaces.Blog;
+import com.cambiar.ludusz.model.SearchBase;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,23 +19,23 @@ import java.util.List;
  * Created by vibes on 28/4/16.
  */
 public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecyclerViewAdapter.MyViewHolder> {
-    List<Blog> blogList = Collections.emptyList();
+    List<SearchBase> searchDataList = Collections.emptyList();
     private LayoutInflater inflater;
     private Context context;
 
-    public SearchRecyclerViewAdapter(Context context, List<Blog> data) {
+    public SearchRecyclerViewAdapter(Context context, List<SearchBase> data) {
         this.context = context;
         inflater = LayoutInflater.from(context);
-        this.blogList = data;
+        this.searchDataList = data;
     }
 
     public void delete(int position) {
-        blogList.remove(position);
+        searchDataList.remove(position);
         notifyItemRemoved(position);
     }
 
-    public void addItem(Blog blog) {
-        blogList.add(blog);
+    public void addItem(SearchBase blog) {
+        searchDataList.add(blog);
         notifyItemChanged(getItemCount() - 1);
     }
 
@@ -47,13 +48,13 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Blog current = blogList.get(position);
+        SearchBase current = searchDataList.get(position);
 
     }
 
     @Override
     public int getItemCount() {
-        return blogList.size();
+        return searchDataList.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {

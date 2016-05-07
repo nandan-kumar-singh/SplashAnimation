@@ -22,6 +22,7 @@ import com.cambiar.ludusz.fragments.SearchListFragment;
 
 public class SearchActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = SearchActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +127,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
         SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        Log.d(TAG, searchView.getQuery().toString());
         return true;
     }
 }

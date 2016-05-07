@@ -12,23 +12,65 @@ import java.io.Serializable;
 /**
  * Created by vibes on 1/5/16.
  */
-public class UserData implements Serializable {
+public class UserData extends Data implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    public String title;
-    public String startTime;
-    public String endTime;
-    public String day;
-
-    public boolean classEnabled;
+    private String userMail;
+    private String userKey;
+    private int userType;
+    private String userName;
+    private String userAddress;
+    private String userLocation;
 
     public UserData() {
     }
 
-    public UserData(String title, String startTime, boolean enable) {
-        this.title = title;
-        this.startTime = startTime;
-        this.classEnabled = enable;
+
+    public String getUserMail() {
+        return userMail;
+    }
+
+    public void setUserMail(String userMail) {
+        this.userMail = userMail;
+    }
+
+    public String getUserKey() {
+        return userKey;
+    }
+
+    public void setUserKey(String userKey) {
+        this.userKey = userKey;
+    }
+
+    public int getUserType() {
+        return userType;
+    }
+
+    public void setUserType(int userType) {
+        this.userType = userType;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public String getUserLocation() {
+        return userLocation;
+    }
+
+    public void setUserLocation(String userLocation) {
+        this.userLocation = userLocation;
     }
 
     public boolean saveObject(Context context, UserData obj) {

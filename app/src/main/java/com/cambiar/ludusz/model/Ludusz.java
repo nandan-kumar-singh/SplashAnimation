@@ -5,9 +5,18 @@ import android.app.Application;
 /**
  * Created by vibes on 20/4/16.
  */
-public class Ludusz extends Application{
+public class Ludusz extends Application {
     private static User _user;
     private static UserData userData;
+
+    public static UserData getUserData() {
+        return userData;
+    }
+
+    public static void setUserData(UserData userData) {
+        Ludusz.userData = userData;
+    }
+
     public static User getUser() {
         return _user;
     }

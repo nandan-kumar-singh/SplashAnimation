@@ -4,15 +4,15 @@ package com.cambiar.ludusz.model;
  * Created by vibes on 25/4/16.
  */
 public class LoginForm {
-    private String status;
+    private int status;
 
     private Data data;
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -26,6 +26,6 @@ public class LoginForm {
 
     @Override
     public String toString() {
-        return "ClassPojo [status = " + status + ", data = " + data + "]";
+        return "[status = " + status + ", data = " + data + "]";
     }
 }

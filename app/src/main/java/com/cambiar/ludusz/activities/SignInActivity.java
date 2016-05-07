@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.cambiar.ludusz.R;
 import com.cambiar.ludusz.model.LoginForm;
+import com.cambiar.ludusz.model.UserData;
+import com.cambiar.ludusz.services.LuduszError;
 import com.cambiar.ludusz.util.AndroidUtil;
 import com.cambiar.ludusz.webservice.LuduszUrlConstants;
 import com.cambiar.ludusz.webservice.WebServiceEngine;
@@ -125,8 +127,28 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onResponse(Response<LoginForm> response) {
                 LoginForm loginInfo = response.body();
-                Log.e(TAG, loginInfo.toString());
-                startActivity(MainActivity.class);
+                if (loginInfo == null) {
+                    Toast.makeText(SignInActivity.this, "Login failed!! try again.. ", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, response.message() + "");
+                    return;
+                }
+                // Log.e(TAG, loginInfo.getStatus());
+                switch (loginInfo.getStatus()) {
+                    case LuduszError.LUDUSZ_ERROR_INVALID: {
+                        UserData userData=new UserData();
+                        //userData.setUserName(loginInfo.getData());
+                        break;
+                    }
+                    case 4: {
+                        startActivity(MainActivity.class);
+                        break;
+                    }
+                    default: {
+                        break;
+                    }
+                }
+
+                //startActivity(MainActivity.class);
                 Toast.makeText(SignInActivity.this, loginInfo.getData().toString(), Toast.LENGTH_LONG).show();
             }
 

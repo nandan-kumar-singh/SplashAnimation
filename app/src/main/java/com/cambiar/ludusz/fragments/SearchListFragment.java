@@ -15,8 +15,6 @@ import android.view.ViewGroup;
 
 import com.cambiar.ludusz.R;
 import com.cambiar.ludusz.adapter.SearchRecyclerViewAdapter;
-import com.cambiar.ludusz.userrole.PlayerLandPage;
-
 
 public class SearchListFragment extends Fragment {
     private static final String TAG = SearchListFragment.class.getSimpleName();
@@ -43,7 +41,7 @@ public class SearchListFragment extends Fragment {
     }
 
     private void initViews(View view) {
-        SearchRecyclerViewAdapter searchRecyclerViewAdapter = new SearchRecyclerViewAdapter(getContext(), new PlayerLandPage(getContext()).getPlayersFavoriteBlog());
+        SearchRecyclerViewAdapter searchRecyclerViewAdapter = new SearchRecyclerViewAdapter(getContext(), null);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_list_search_data);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setNestedScrollingEnabled(true);

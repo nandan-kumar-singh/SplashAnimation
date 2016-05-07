@@ -52,5 +52,6 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.0.0-RC1'
     compile 'com.viewpagerindicator:library:2.4.2-SNAPSHOT'
     compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'ch.acra:acra:4.8.5'
 }
 apply plugin: 'com.google.gms.google-services'

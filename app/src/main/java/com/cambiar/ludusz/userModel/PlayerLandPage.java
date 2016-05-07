@@ -1,4 +1,4 @@
-package com.cambiar.ludusz.userrole;
+package com.cambiar.ludusz.userModel;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
