@@ -6,7 +6,7 @@
     android:padding="2dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="3dp"
-    app:cardElevation="3dp"
+    app:cardElevation="5dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -15,7 +15,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="358dp"
+            android:layout_height="wrap_content"
             android:padding="3dp">
 
             <com.cambiar.ludusz.util.RoundedImageView
@@ -82,7 +82,8 @@
                     android:gravity="center"
                     android:singleLine="true"
                     android:text="11"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textSize="11sp" />
 
             </LinearLayout>
 
@@ -115,7 +116,8 @@
                     android:gravity="center"
                     android:singleLine="true"
                     android:text="11"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textSize="11sp" />
 
             </LinearLayout>
 
@@ -195,7 +197,6 @@
                     android:layout_height="35dp"
                     android:layout_margin="3dp"
                     android:background="@drawable/ludusz_button_red_round"
-                    android:elevation="2dp"
                     android:padding="4dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_action_call_red" />
@@ -207,7 +208,6 @@
                     android:layout_height="35dp"
                     android:layout_margin="3dp"
                     android:background="@drawable/ludusz_button_red_round"
-                    android:elevation="2dp"
                     android:padding="4dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_action_mail_red" />
@@ -221,7 +221,6 @@
                     android:layout_marginLeft="3dp"
                     android:layout_marginTop="3dp"
                     android:background="@drawable/button_selector_red"
-                    android:elevation="2dp"
                     android:text="Book"
                     android:textColor="@color/white" />
             </LinearLayout>
@@ -233,9 +232,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/linearLayout3"
-                android:background="@drawable/button_selector_red"
+                android:background="@color/black_shade"
                 android:clickable="false"
-                android:elevation="2dp"
                 android:paddingLeft="@dimen/landing_page_left_margin">
 
                 <ImageView
@@ -248,13 +246,13 @@
                     android:src="@drawable/ic_my_student" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/textView92"
+                    android:id="@+id/tv_galary_header"
                     style="@style/Base.TextAppearance.AppCompat.Small"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="Popular Student"
+                    android:text="Gallery "
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white" />
 
@@ -304,10 +302,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:src="@drawable/ic_action_review"
                         android:text="10"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                        android:textColor="@color/dark_black" />
+                        android:textColor="@color/dark_black"
+                        android:textSize="11sp" />
                 </android.support.v7.widget.LinearLayoutCompat>
 
                 <android.support.v7.widget.LinearLayoutCompat
@@ -317,59 +315,29 @@
                     android:layout_margin="2dp"
                     android:background="@drawable/yellow_round_corner_box">
 
-                    <android.support.v7.widget.AppCompatRatingBar
-                        android:id="@+id/indicator_ratingbar"
-                        style="?android:attr/ratingBarStyleSmall"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:isIndicator="true"
-                        android:numStars="5" />
-                </android.support.v7.widget.LinearLayoutCompat>
-
-                <android.support.v7.widget.LinearLayoutCompat
-                    android:id="@+id/ll_connected_people"
-                    android:layout_width="80dp"
-                    android:layout_height="35dp"
-                    android:layout_margin="2dp"
-                    android:background="@drawable/yellow_round_corner_box">
-
-                    <android.support.v7.widget.AppCompatImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_action_people" />
-
                     <TextView
-                        android:id="@+id/tv_connected_people_count"
-                        android:layout_width="0dp"
+                        android:id="@+id/tv_rating_star"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:gravity="center"
-                        android:src="@drawable/ic_action_review"
-                        android:text="+10"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                        android:textColor="@color/dark_black" />
+                        android:text="\u2605 \u2605 \u2606"
+                        android:textColor="@color/white" />
                 </android.support.v7.widget.LinearLayoutCompat>
 
-                <android.support.v7.widget.LinearLayoutCompat
-                    android:id="@+id/ll_compare"
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btn_compare"
                     android:layout_width="100dp"
                     android:layout_height="35dp"
                     android:layout_margin="2dp"
-                    android:background="@drawable/yellow_round_corner_box">
+                    android:background="@drawable/yellow_round_corner_box"
+                    android:gravity="center"
+                    android:src="@drawable/ic_action_review"
+                    android:text="Compare +"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="@color/dark_black"
+                    android:visibility="visible" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:src="@drawable/ic_action_review"
-                        android:text="Compare +"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                        android:textColor="@color/dark_black"
-                        android:visibility="visible" />
-                </android.support.v7.widget.LinearLayoutCompat>
             </LinearLayout>
 
             <LinearLayout
@@ -383,10 +351,11 @@
                 android:layout_below="@+id/ll_popular_student"
                 android:gravity="end"
                 android:orientation="horizontal"
-                android:padding="3dp">
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp">
 
                 <ImageView
-                    android:id="@+id/imageView14"
+                    android:id="@+id/iv_galary_1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
@@ -395,7 +364,7 @@
                     android:src="@drawable/ic_people" />
 
                 <ImageView
-                    android:id="@+id/imageView13"
+                    android:id="@+id/iv_galary_2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
@@ -404,7 +373,7 @@
                     android:src="@drawable/ic_people" />
 
                 <ImageView
-                    android:id="@+id/imageView12"
+                    android:id="@+id/iv_galary_3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
@@ -413,16 +382,16 @@
                     android:src="@drawable/ic_people" />
 
                 <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/imageView11"
+                    android:id="@+id/btn_galary_show_more"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:background="@color/white_shade"
+                    android:background="@drawable/button_selector_black_shade"
                     android:src="@drawable/ic_people"
                     android:text="+12"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white" />
             </LinearLayout>
 
         </RelativeLayout>

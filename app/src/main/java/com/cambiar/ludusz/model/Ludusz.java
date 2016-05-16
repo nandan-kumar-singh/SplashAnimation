@@ -2,19 +2,24 @@ package com.cambiar.ludusz.model;
 
 import android.app.Application;
 
+import com.cambiar.ludusz.util.AndroidUtil;
+
 /**
  * Created by vibes on 20/4/16.
  */
 public class Ludusz extends Application {
+    public static final String CLASS_NAME = Ludusz.class.getSimpleName();
     private static User _user;
-    private static UserData userData;
 
-    public static UserData getUserData() {
+    public UserData getUserData() {
+        UserData userData = UserData.getObject(this);
+        if (userData == null)
+            return new UserData();
         return userData;
     }
 
-    public static void setUserData(UserData userData) {
-        Ludusz.userData = userData;
+    public void setUserData(UserData userData) {
+        AndroidUtil.saveObject(this, userData, UserData.class.getSimpleName());
     }
 
     public static User getUser() {

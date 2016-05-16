@@ -17,6 +17,8 @@ public class SearchBase implements Serializable {
 
     private String searchResultLocation;
 
+    private String searchResultFee;
+
     private String searchResultProfilePicture;
 
     private int searchResultLikes;
@@ -32,6 +34,53 @@ public class SearchBase implements Serializable {
     private int getSearchResultConnectedPeopleCount;
 
     private List<String> getSearchResultImageGalaryURLs;
+    private String coachingOffered;
+    private String offerCoachingTo;
+    private String coachingFee;
+    private String coachingExperience;
+
+    public String getCoachingOffered() {
+        return coachingOffered;
+    }
+
+    public void setCoachingOffered(String coachingOffered) {
+        this.coachingOffered = coachingOffered;
+    }
+
+    public String getOfferCoachingTo() {
+        return offerCoachingTo;
+    }
+
+    public void setOfferCoachingTo(String offerCoachingTo) {
+        this.offerCoachingTo = offerCoachingTo;
+    }
+
+    public String getCoachingFee() {
+        return coachingFee;
+    }
+
+    public void setCoachingFee(String coachingFee) {
+        this.coachingFee = coachingFee;
+    }
+
+    public String getCoachingExperience() {
+        return coachingExperience;
+    }
+
+    public void setCoachingExperience(String coachingExperience) {
+        this.coachingExperience = coachingExperience;
+    }
+
+    public SearchBase() {
+    }
+
+    public String getSearchResultFee() {
+        return searchResultFee;
+    }
+
+    public void setSearchResultFee(String searchResultFee) {
+        this.searchResultFee = searchResultFee;
+    }
 
     public String getSearchResultName() {
         return searchResultName;

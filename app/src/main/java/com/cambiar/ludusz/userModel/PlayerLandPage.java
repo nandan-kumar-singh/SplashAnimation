@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.cambiar.ludusz.R;
 import com.cambiar.ludusz.interfaces.Banner;
 import com.cambiar.ludusz.interfaces.Blog;
 import com.cambiar.ludusz.interfaces.LandPage;
@@ -48,10 +49,10 @@ public class PlayerLandPage implements LandPage {
         } else {
             // banner1=new PromotionalBanner("Header1", "Description New", "http://www.emiratesrobotics.me/images/menu-img-4.jpg", "StartDate", "EndDate");
         }
-        Banner banner2 = new PromotionalBanner("Header2", "Description2", "http://www.emiratesrobotics.me/images/menu-img-4.jpg", "StartDate", "EndDate");
-        Banner banner3 = new PromotionalBanner("Header3", "Description3", "http://www.emiratesrobotics.me/images/menu-img-4.jpg", "StartDate", "EndDate");
-        Banner banner4 = new PromotionalBanner("Header4", "Description4", "http://www.emiratesrobotics.me/images/menu-img-4.jpg", "StartDate", "EndDate");
-        Banner banner5 = new PromotionalBanner("Header5", "Description5", "http://www.emiratesrobotics.me/images/menu-img-4.jpg", "StartDate", "EndDate");
+        Banner banner2 = new PromotionalBanner("Header2", context.getString(R.string.blob_text), "http://www.surrey.ac.uk/sites/default/files/sport%20and%20health%2015.jpg", "StartDate", "EndDate");
+        Banner banner3 = new PromotionalBanner("Header3", context.getString(R.string.blob_text), "http://blogs-images.forbes.com/jasonbelzer/files/2015/02/sports_business.jpg", "StartDate", "EndDate");
+        Banner banner4 = new PromotionalBanner("Header4", context.getString(R.string.blob_text), "http://cx.aos.ask.com/question/aq/700px-394px/advantages-playing-sports_5cd0454e9d52563e.jpg", "StartDate", "EndDate");
+        Banner banner5 = new PromotionalBanner("Header5", context.getString(R.string.blob_text), "http://www.unep.org/sport_env/images/impact_enviroment_sport.jpg", "StartDate", "EndDate");
 
         promotionalBanners.add(banner2);
         promotionalBanners.add(banner3);

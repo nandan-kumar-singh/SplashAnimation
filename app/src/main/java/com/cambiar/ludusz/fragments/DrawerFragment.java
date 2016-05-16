@@ -5,6 +5,9 @@ package com.cambiar.ludusz.fragments;
  */
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -17,10 +20,16 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.cambiar.ludusz.R;
 import com.cambiar.ludusz.adapter.NavigationDrawerAdapter;
+import com.cambiar.ludusz.model.Ludusz;
 import com.cambiar.ludusz.model.NavDrawerItem;
+import com.cambiar.ludusz.model.UserData;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +39,16 @@ public class DrawerFragment extends Fragment {
 
     private static String TAG = DrawerFragment.class.getSimpleName();
     private static String[] titles = null;
+    private static int[] icons = null;
+    private Ludusz ludusz;
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     //private
 
     private View containerView;
-
+    private ImageView imageViewuserPic;
+    private TextView textViewEmail, textViewName;
     private FragmentDrawerListener drawerListener;
 
     public DrawerFragment() {
@@ -49,6 +61,7 @@ public class DrawerFragment extends Fragment {
         for (int i = 0; i < titles.length; i++) {
             NavDrawerItem navItem = new NavDrawerItem();
             navItem.setTitle(titles[i]);
+            navItem.setIcon(icons[i]);
             data.add(navItem);
         }
         return data;
@@ -62,7 +75,16 @@ public class DrawerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // drawer labels
-        titles = getActivity().getResources().getStringArray(R.array.nav_drawer_labels);
+        titles = getActivity().getResources().getStringArray(R.array.drawer_layout_labels);
+        icons = new int[]{R.mipmap.ic_action_share,
+                R.mipmap.ic_action_share,
+                R.mipmap.ic_action_blog,
+                R.mipmap.ic_action_calendar,
+                R.mipmap.ic_action_share,
+                R.mipmap.ic_action_share,
+                R.mipmap.ic_action_share,
+                R.mipmap.ic_action_share,
+                R.mipmap.ic_action_share};
     }
 
     @Override
@@ -70,25 +92,61 @@ public class DrawerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflating view layout
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        imageViewuserPic = (ImageView) layout.findViewById(R.id.iv_user_profile_pic);
+
+        ludusz = (Ludusz) getContext().getApplicationContext();
+        UserData userData = ludusz.getUserData();
+        textViewName = ((TextView) layout.findViewById(R.id.tv_user_name));
+        textViewEmail = ((TextView) layout.findViewById(R.id.tv_user_email));
+
+        Picasso.with(getContext()).load(userData.getUserPic()).into(new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                imageViewuserPic.setImageBitmap(bitmap);
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+            }
+        });
+
 
         RecyclerView recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
 
         NavigationDrawerAdapter adapter = new NavigationDrawerAdapter(getActivity(), getData());
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                drawerListener.onDrawerItemSelected(view, position);
-                mDrawerLayout.closeDrawer(containerView);
-            }
+        recyclerView.setLayoutManager(new
 
-            @Override
-            public void onLongClick(View view, int position) {
-                String title = "Click to go to this screen";
+                LinearLayoutManager(getActivity()
 
-            }
-        }));
+        ));
+        recyclerView.addOnItemTouchListener(new
+
+                RecyclerTouchListener(getActivity(), recyclerView,
+
+                new
+
+                        ClickListener() {
+                            @Override
+                            public void onClick(View view, int position) {
+                                drawerListener.onDrawerItemSelected(view, position);
+                                mDrawerLayout.closeDrawer(containerView);
+                            }
+
+                            @Override
+                            public void onLongClick(View view, int position) {
+                                String title = "Click to go to this screen";
+
+                            }
+                        }
+
+        ));
 
         return layout;
     }
@@ -101,6 +159,8 @@ public class DrawerFragment extends Fragment {
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 getActivity().invalidateOptionsMenu();
+                textViewName.setText(ludusz.getUserData().getUserName() + "");
+                textViewEmail.setText(ludusz.getUserData().getUserMail() + "");
             }
 
             @Override
@@ -136,6 +196,16 @@ public class DrawerFragment extends Fragment {
 
     public interface FragmentDrawerListener {
         void onDrawerItemSelected(View view, int position);
+    }
+
+    @Override
+    public void onStart() {
+        updateData();
+        super.onStart();
+    }
+
+    private void updateData() {
+
     }
 
     static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {

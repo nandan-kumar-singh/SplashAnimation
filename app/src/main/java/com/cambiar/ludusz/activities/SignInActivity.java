@@ -13,7 +13,7 @@ import com.cambiar.ludusz.model.LoginForm;
 import com.cambiar.ludusz.model.UserData;
 import com.cambiar.ludusz.services.LuduszError;
 import com.cambiar.ludusz.util.AndroidUtil;
-import com.cambiar.ludusz.webservice.LuduszUrlConstants;
+import com.cambiar.ludusz.util.LuduszConstants;
 import com.cambiar.ludusz.webservice.WebServiceEngine;
 
 import retrofit2.Call;
@@ -114,7 +114,7 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
     private void doLogin(String user_name, String user_password) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(LuduszUrlConstants.BASE_URL)
+                .baseUrl(LuduszConstants.BASE_URL)
                 .client(WebServiceEngine.getCachedOkHttpClient(this))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -135,7 +135,7 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
                 // Log.e(TAG, loginInfo.getStatus());
                 switch (loginInfo.getStatus()) {
                     case LuduszError.LUDUSZ_ERROR_INVALID: {
-                        UserData userData=new UserData();
+                        UserData userData = new UserData();
                         //userData.setUserName(loginInfo.getData());
                         break;
                     }

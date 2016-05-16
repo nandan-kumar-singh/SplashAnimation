@@ -7,8 +7,17 @@ public class RegisterForm {
     private String userName;
     private String userEmail;
     private String userCountry;
+    private String userType;
     private String userMobile;
     private String userPassword;
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
 
     public String getUserName() {
         return userName;
@@ -61,6 +70,7 @@ public class RegisterForm {
                 + ",UserCountry="
                 + userCountry
                 + "UserMobile=" + userMobile
-                + "userPassword=" + userPassword;
+                + "userPassword=" + userPassword
+                + "}";
     }
 }

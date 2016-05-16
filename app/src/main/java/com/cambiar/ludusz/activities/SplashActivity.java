@@ -27,7 +27,9 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
         ludusz = (Ludusz) getApplicationContext();
         try {
-            ((TextView) findViewById(R.id.tv_splash_version)).setText("Ver." + AndroidUtil.getAppVersion(this));
+            TextView textView = ((TextView) findViewById(R.id.tv_splash_version));
+            if (textView != null)
+                textView.setText("Ver." + AndroidUtil.getAppVersion(this));
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -35,7 +37,7 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, AppDescriptionActivity.class);
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 overridePendingTransition(R.anim.zoom_in, R.anim.zoom_exit);

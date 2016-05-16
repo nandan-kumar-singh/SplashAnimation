@@ -34,7 +34,9 @@ import com.cambiar.ludusz.activities.SearchActivity;
 import com.cambiar.ludusz.adapter.LandingPageFavoriteBlogAdapter;
 import com.cambiar.ludusz.adapter.PBViewPagerAdapter;
 import com.cambiar.ludusz.model.Ludusz;
+import com.cambiar.ludusz.model.UserData;
 import com.cambiar.ludusz.userModel.PlayerLandPage;
+import com.cambiar.ludusz.util.LuduszConstants;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -53,9 +55,10 @@ import butterknife.ButterKnife;
 
 public class LandingPageFragmentPlayer extends Fragment implements View.OnClickListener {
     private static final String TAG = LandingPageFragmentPlayer.class.getSimpleName();
-    private TextView tv_userLocation;
+    private TextView textViewUserLocation;
     private static WeakReference<LandingPageFragmentPlayer> homeFragmentWeakReference;
     private LandingPageFavoriteBlogAdapter landingPageFavoriteBlogAdapter;
+    private Ludusz ludusz;
 
     public static LandingPageFragmentPlayer getInstance() {
         if (homeFragmentWeakReference == null) {
@@ -81,6 +84,7 @@ public class LandingPageFragmentPlayer extends Fragment implements View.OnClickL
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_landing_page_player, container, false);
+        ludusz = (Ludusz) getContext().getApplicationContext();
         ButterKnife.bind(getActivity(), rootView);
         setUpToolbar(rootView);
         initViews(rootView);
@@ -133,8 +137,8 @@ public class LandingPageFragmentPlayer extends Fragment implements View.OnClickL
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(null);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
         View mCustomView = getLayoutInflater(null).inflate(R.layout.layout_landing_page_toolbar, null);
-        tv_userLocation = (TextView) mCustomView.findViewById(R.id.tv_user_location);
-        tv_userLocation.setOnClickListener(this);
+        textViewUserLocation = (TextView) mCustomView.findViewById(R.id.tv_user_location);
+        textViewUserLocation.setOnClickListener(this);
 
         mCustomView.findViewById(R.id.btn_player_location).setOnClickListener(this);
         mCustomView.findViewById(R.id.img_btn_search).setOnClickListener(this);
@@ -199,6 +203,12 @@ public class LandingPageFragmentPlayer extends Fragment implements View.OnClickL
         super.onStart();
         if (mGoogleApiClient != null)
             mGoogleApiClient.connect();
+
+        UserData userData = ludusz.getUserData();
+        if (userData != null) {
+            textViewUserLocation.setText(userData.getUserAddress());
+        }
+
     }
 
     @Override
@@ -209,7 +219,7 @@ public class LandingPageFragmentPlayer extends Fragment implements View.OnClickL
         }
     }
 
-    int PLACE_PICKER_REQUEST = 1;
+
     GoogleApiClient mGoogleApiClient;
 
     void placePicker() {
@@ -237,22 +247,21 @@ public class LandingPageFragmentPlayer extends Fragment implements View.OnClickL
                 .build();
         PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
         try {
-            startActivityForResult(builder.build(getActivity()), PLACE_PICKER_REQUEST);
+            startActivityForResult(builder.build(getActivity()), LuduszConstants.Field.PLACE_PICKER_REQUEST_CODE);
         } catch (Exception e) {
             Log.e("Exception", e.getMessage());
         }
 
     }
 
-    int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
     private void callPlaceAutocompleteActivityIntent() {
         try {
             Intent intent =
                     new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
                             .build(getActivity());
-
-            startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivityForResult(intent, LuduszConstants.Field.PLACE_AUTOCOMPLETE_REQUEST_CODE);
         } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
             // TODO: Handle the error.
         }
@@ -260,26 +269,31 @@ public class LandingPageFragmentPlayer extends Fragment implements View.OnClickL
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PLACE_PICKER_REQUEST) {
+
+        if (requestCode == LuduszConstants.Field.PLACE_AUTOCOMPLETE_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
-                Place place = PlacePicker.getPlace(data, getContext());
-                //String toastMsg = String.format("Place: %s", place.getAddress().subSequence(0, 20));
-                //Toast.makeText(getContext(), toastMsg, Toast.LENGTH_LONG).show();
-            }
-            if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
-                if (resultCode == Activity.RESULT_OK) {
-                    Place place = PlaceAutocomplete.getPlace(getContext(), data);
+                Place place = PlaceAutocomplete.getPlace(getContext(), data);
 
-                    tv_userLocation.setText(place.getName());
-                    Log.i(TAG, "Place:" + place.toString());
-                } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
-                    Status status = PlaceAutocomplete.getStatus(getContext(), data);
-                    Log.i(TAG, status.getStatusMessage());
-                } else if (requestCode == Activity.RESULT_CANCELED) {
 
-                }
+                UserData userData = ludusz.getUserData();
+                userData.setUserAddress(place.getName().toString() + "");
+                userData.setUserLocationLatitude(place.getLatLng().latitude);
+                userData.setUserLocationLongitude(place.getLatLng().longitude);
+                userData.setUserName("Nandan Kumar Singh");
+                userData.setUserMail("nandansingh024@gmail.com");
+
+                ((Ludusz) getContext().getApplicationContext()).setUserData(userData);
+
+                textViewUserLocation.setText(place.getName());
+                Log.i(TAG, "Place:" + place.toString());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(getContext(), data);
+                Log.i(TAG, status.getStatusMessage());
+            } else if (requestCode == Activity.RESULT_CANCELED) {
+
             }
         }
+
     }
 
     /**
@@ -336,7 +350,7 @@ public class LandingPageFragmentPlayer extends Fragment implements View.OnClickL
             case R.id.btn_explore_coach: {
                 //Toast.makeText(getContext(), "Hello btn_explore_coach", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), SearchActivity.class);
-                intent.putExtra("tab_id", 1);
+                intent.putExtra("tab_id", 0);
                 startActivity(intent);
                 break;
 
@@ -344,7 +358,7 @@ public class LandingPageFragmentPlayer extends Fragment implements View.OnClickL
             case R.id.btn_explore_institute: {
                 //Toast.makeText(getContext(), "Hello btn_explore_institute", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), SearchActivity.class);
-                intent.putExtra("tab_id", 5);
+                intent.putExtra("tab_id", 4);
                 startActivity(intent);
                 break;
 
@@ -352,7 +366,7 @@ public class LandingPageFragmentPlayer extends Fragment implements View.OnClickL
             case R.id.btn_explore_player: {
                 //Toast.makeText(getContext(), "Hello btn_explore_player", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), SearchActivity.class);
-                intent.putExtra("tab_id", 6);
+                intent.putExtra("tab_id", 5);
                 startActivity(intent);
                 break;
 
@@ -360,7 +374,7 @@ public class LandingPageFragmentPlayer extends Fragment implements View.OnClickL
             case R.id.btn_explore_event: {
                 //Toast.makeText(getContext(), "Hello btn_explore_event", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), SearchActivity.class);
-                intent.putExtra("tab_id", 2);
+                intent.putExtra("tab_id", 1);
                 startActivity(intent);
                 break;
 

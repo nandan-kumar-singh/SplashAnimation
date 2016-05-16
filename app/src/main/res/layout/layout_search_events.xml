@@ -419,10 +419,10 @@
                     android:layout_gravity="center_vertical"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:background="@color/white_shade"
+                    android:background="@drawable/button_selector_black_shade"
                     android:src="@drawable/ic_people"
                     android:text="+12"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white" />
             </LinearLayout>
 
         </RelativeLayout>

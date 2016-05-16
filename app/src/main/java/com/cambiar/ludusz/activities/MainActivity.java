@@ -1,5 +1,6 @@
 package com.cambiar.ludusz.activities;
 
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.transition.Fade;
 import android.transition.Slide;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 
@@ -34,6 +36,9 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
         drawerFragment = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setDrawerListener(this);
         displayView(0, Ludusz.getUser());
+        float[] f = new float[3];
+        Location.distanceBetween(26.453131, 26.845899, 80.316383, 80.975563, f);
+        Log.e(TAG, f[2] + "");
     }
 
     @Override
@@ -147,9 +152,8 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
         }, 700);
 
         //check if the current fragment is LandingPageFragmentPlayer or not
-        switch (Ludusz.getUser())
-        {
-            case PLAYER:{
+        switch (Ludusz.getUser()) {
+            case PLAYER: {
                 if (LandingPageFragmentPlayer.getInstance().isVisible()) {
                     //Toast.makeText(this,"Hello LandingPageFragmentPlayer",Toast.LENGTH_SHORT).show();
                 } else {
@@ -157,7 +161,7 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
                 }
                 break;
             }
-            case COACH:{
+            case COACH: {
                 if (LandingPageFragmentCoach.getInstance().isVisible()) {
                     //Toast.makeText(this,"Hello LandingPageFragmentPlayer",Toast.LENGTH_SHORT).show();
                 } else {
@@ -165,7 +169,7 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
                 }
                 break;
             }
-            case CO_ORDINATOR:{
+            case CO_ORDINATOR: {
                 if (LandingPageFragmentCoordinator.getInstance().isVisible()) {
                     //Toast.makeText(this,"Hello LandingPageFragmentPlayer",Toast.LENGTH_SHORT).show();
                 } else {
@@ -173,7 +177,7 @@ public class MainActivity extends BaseActivity implements DrawerFragment.Fragmen
                 }
                 break;
             }
-            case EVENT_ORGANISER:{
+            case EVENT_ORGANISER: {
                 if (LandingPageFragmentEventOrganizer.getInstance().isVisible()) {
                     //Toast.makeText(this,"Hello LandingPageFragmentPlayer",Toast.LENGTH_SHORT).show();
                 } else {

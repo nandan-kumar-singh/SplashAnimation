@@ -44,6 +44,7 @@
     <string name="enter_password_minimum_to_six_char">Enter minimum six digit password</string>
     <string name="enter_a_valid_mobile_number">Enter a valid mobile number</string>
     <string name="crash_toast_text">Ludusz has Crashed!!</string>
+    <string name="action_share">Share</string>
 
     <string-array name="nav_drawer_labels">
         <item>@string/nav_item_home</item>

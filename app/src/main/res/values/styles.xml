@@ -25,6 +25,10 @@
 
     </style>
 
+    <style name="TransparentToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="windowActionBarOverlay">true</item>
+    </style>
 
     <style name="MaterialThemeDialog" parent="Theme.AppCompat.Light.Dialog.MinWidth">
         <item name="windowActionBar">false</item>

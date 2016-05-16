@@ -3,17 +3,19 @@ package com.cambiar.ludusz.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.widget.AppCompatSpinner;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.cambiar.ludusz.R;
 import com.cambiar.ludusz.model.RegisterForm;
 import com.cambiar.ludusz.util.AndroidUtil;
-import com.cambiar.ludusz.webservice.LuduszUrlConstants;
+import com.cambiar.ludusz.util.LuduszConstants;
 import com.cambiar.ludusz.webservice.WebServiceEngine;
 
 import retrofit2.Call;
@@ -29,6 +31,7 @@ public class RegisterUserActivity extends BaseActivity implements View.OnClickLi
     private TextInputLayout textInputLayoutUserName,
             textInputLayoutUserEmail,
             textInputLayoutUserCountry,
+            textInputLayoutUserTypes,
             textInputLayoutUserMobile,
             textInputLayoutUserPassword,
             textInputLayoutUserRePassword;
@@ -38,6 +41,7 @@ public class RegisterUserActivity extends BaseActivity implements View.OnClickLi
             editTextUserPassword,
             editTextUserRePassword;
     private AutoCompleteTextView autoCompleteTextViewCountry;
+    private Spinner spinnerUserType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,7 @@ public class RegisterUserActivity extends BaseActivity implements View.OnClickLi
         editTextUserName = (EditText) findViewById(R.id.et_user_name);
         editTextUserEmail = (EditText) findViewById(R.id.et_user_email);
         autoCompleteTextViewCountry = (AutoCompleteTextView) findViewById(R.id.et_user_country);
+        spinnerUserType = (AppCompatSpinner) findViewById(R.id.spinner_user_type);
         editTextUserMobile = (EditText) findViewById(R.id.et_user_mobile);
         editTextUserPassword = (EditText) findViewById(R.id.et_user_password);
         editTextUserRePassword = (EditText) findViewById(R.id.et_user_re_password);
@@ -65,8 +70,12 @@ public class RegisterUserActivity extends BaseActivity implements View.OnClickLi
         findViewById(R.id.btn_register_user).setOnClickListener(this);
 
         String[] countries = getResources().getStringArray(R.array.countries_array);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, countries);
-        autoCompleteTextViewCountry.setAdapter(adapter);
+        ArrayAdapter<String> adapterCountry = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, countries);
+        autoCompleteTextViewCountry.setAdapter(adapterCountry);
+
+        String[] userType = getResources().getStringArray(R.array.user_types);
+        ArrayAdapter<String> adapterUser = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, userType);
+        spinnerUserType.setAdapter(adapterUser);
     }
 
     private boolean validateLogin() {
@@ -159,7 +168,7 @@ public class RegisterUserActivity extends BaseActivity implements View.OnClickLi
 
     private void doRegisterUser(final RegisterForm registerForm) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(LuduszUrlConstants.BASE_URL)
+                .baseUrl(LuduszConstants.BASE_URL)
                 .client(WebServiceEngine.getCachedOkHttpClient(this))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -182,7 +191,7 @@ public class RegisterUserActivity extends BaseActivity implements View.OnClickLi
     }
 
     public interface LuduszLoginUser {
-        @GET("index.php?action=test")
+        @GET("index.php?action=register")
         Call<RegisterForm> login(@Query("login") RegisterForm loginForm);
     }
 

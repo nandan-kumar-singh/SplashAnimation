@@ -28,5 +28,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="#333300aa" />
+        android:background="@color/black_shade2"
+        android:text="@string/blob_text"
+        android:textColor="@color/white" />
 </RelativeLayout>

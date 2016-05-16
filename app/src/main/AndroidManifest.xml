@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cambiar.ludusz">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -61,7 +62,8 @@
             android:name=".activities.ResetPasswordActivity"
             android:theme="@style/MaterialThemeDialog" />
         <activity android:name=".activities.SearchActivity" />
-        <activity android:name=".activities.NearByActivity"></activity>
+        <activity android:name=".activities.NearByActivity" />
+        <activity android:name=".activities.PlayerProfilePage"></activity>
     </application>
 
 </manifest>

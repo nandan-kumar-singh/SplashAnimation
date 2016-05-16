@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="search_tab_items">
-        <item>All</item>
+        <!--<item>All</item>-->
         <item>Coaches</item>
         <item>Events</item>
         <item>Courses</item>
         <item>Centers</item>
         <item>Institutes</item>
         <item>Players</item>
+    </string-array>
+    <string-array name="drawer_layout_labels">
+        <item>Home</item>
+        <item>My Dashboard</item>
+        <item>My Profile</item>
+        <item>My Rewords</item>
+        <item>My Wallet</item>
+        <item>My Offers</item>
+        <item>Settings</item>
+        <item>Support</item>
+        <item>Feedback</item>
     </string-array>
     <string-array name="countries_array">
         <item>Afghanistan</item>
@@ -260,5 +271,11 @@
         <item>Settings</item>
         <item>Support</item>
         <item>Feedback</item>
+    </string-array>
+    <string-array name="user_types">
+        <item>Player</item>
+        <item>Coach</item>
+        <item>Co-ordinator</item>
+        <item>Event Organizer</item>
     </string-array>
 </resources>
